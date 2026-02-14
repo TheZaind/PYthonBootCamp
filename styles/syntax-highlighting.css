@@ -1,0 +1,75 @@
+/* ============================================
+   CODE BLOCK SYNTAX HIGHLIGHTING ENHANCEMENTS
+   ============================================ */
+
+/* Override Highlight.js theme for better comment visibility */
+.hljs-comment {
+    color: #6c757d !important;
+    /* Grau für Kommentare */
+    font-style: italic !important;
+    opacity: 0.85;
+}
+
+/* Python-spezifische Styles */
+.language-python .hljs-keyword {
+    color: #c678dd !important;
+    /* Lila für Keywords (def, if, for, etc.) */
+    font-weight: 600;
+}
+
+.language-python .hljs-string {
+    color: #98c379 !important;
+    /* Grün für Strings */
+}
+
+.language-python .hljs-number {
+    color: #d19a66 !important;
+    /* Orange für Zahlen */
+}
+
+.language-python .hljs-built_in {
+    color: #61afef !important;
+    /* Blau für built-in Funktionen */
+}
+
+.language-python .hljs-function .hljs-title {
+    color: #e5c07b !important;
+    /* Gelb für Funktionsnamen */
+}
+
+/* Code-Block Container */
+.code-block pre {
+    margin: 0;
+    padding: var(--space-4);
+    background: #282c34 !important;
+    /* Dunkler Hintergrund wie Atom One Dark */
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+}
+
+.code-block code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #abb2bf;
+    /* Helle Textfarbe */
+}
+
+/* Scrollbar für Code-Blöcke */
+.code-block pre::-webkit-scrollbar {
+    height: 8px;
+}
+
+.code-block pre::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.code-block pre::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.code-block pre::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}

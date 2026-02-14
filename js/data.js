@@ -1,0 +1,1953 @@
+// ============================================
+// COURSE DATA - VOLLSTÄNDIG AUS MARKDOWN EXTRAHIERT
+// Alle 30 Tage mit detaillierten Schritten
+// ============================================
+
+const courseData = {
+  weeks: [
+    {
+      id: 1,
+      title: "Woche 1: Grundlagen",
+      subtitle: "Die absoluten Grundlagen von Python",
+      description: "Das Fundament für alles Weitere! Lerne Variablen, Schleifen, Bedingungen und Funktionen.",
+      color: "orange",
+      days: [
+        {
+                "id": 1,
+                "weekId": 1,
+                "title": "Variablen & Operatoren - Taschenrechner",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Variablen & Operatoren - Taschenrechner",
+                        "description": "Erstelle einen interaktiven Taschenrechner und verstehe dabei, wie Variablen und Datentypen funktionieren.",
+                        "goals": [
+                                "IPO-Prinzip: Input → Process → Output",
+                                "Variablen: Speicherboxen für Daten (`box = wert`)",
+                                "Datentypen: Unterschied zwischen String (`\"1\"`) und Zahl (`1`)",
+                                "Casting: Umwandeln von Typen (`float(\"1.5\")`, `int(\"5\")`)",
+                                "Input: Daten vom User holen (ist immer Text!)",
+                                "f-Strings: Variablen schön ausgeben (`f\"Ergebnis: {wert}\"`)"
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (IPO-Prinzip)",
+                                "goal": "Verstehen, wie JEDES Computerprogramm fundamental funktioniert.",
+                                "why": "Bevor wir tippen, müssen wir wissen, was wir bauen. Stell dir dein Programm wie eine Fabrik vor.",
+                                "instruction": "1.  Schau dir das Diagramm unten an.\n2.  Verinnerliche das **IPO-Prinzip**: Input → Process → Output.\n3.  Jedes Programm holt Daten (Input), macht etwas damit (Process) und zeigt das Ergebnis (Output).",
+                                "code": "",
+                                "checkpoint": " Jedes mal wenn du codest, frage dich: Was ist mein Input? Was ist mein Output?"
+                        },
+                        {
+                                "number": 2,
+                                "title": "Die Variable (Das Gedächtnis)",
+                                "goal": "Lernen, Daten im Computer-Gedächtnis zu speichern.",
+                                "why": "Computer sind vergesslich. Ohne Variablen (\"Boxen\") vergessen sie jede Zahl sofort wieder.",
+                                "instruction": "Eine Variable ist wie eine **Umzugskiste**.\n1.  Du nimmst eine leere Kiste.\n2.  Du klebst ein Etikett drauf (der **Name**).\n3.  Du legst etwas hinein (der **Wert**).",
+                                "code": "# Wir erstellen eine Box namens 'alter' und legen die Zahl 25 hinein\nalter = 25  \n\n# Wir schauen in die Box (Output)\nprint(alter)",
+                                "checkpoint": " Hast du verstanden, dass `=` bedeutet: \"Speichere rechts in links\"? (Und nicht \"ist gleich\" wie in Mathe!)"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Datentypen (Text vs. Zahl)",
+                                "goal": "Den Unterschied zwischen `10` und `\"10\"` verstehen.",
+                                "why": "Für dich ist es das Gleiche, für den Computer nicht!",
+                                "instruction": "Wir machen ein Experiment \"Predict-Observe-Explain\".\n1.  Schau dir den Code unten an.\n2.  RATE was passiert (noch nicht ausführen!).\n3.  Dann führe ihn aus.",
+                                "code": "# Was passiert hier wohl?\nzahl1 = \"10\" \nzahl2 = \"5\"\n\nergebnis = zahl1 + zahl2\nprint(ergebnis)",
+                                "checkpoint": " Hast du `105` gesehen? Das passiert, wenn man Texte \"addiert\" (zusammenklebt). `\"Hallo\" + \"Welt\"` = `\"HalloWelt\"`."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Der Transformer (Input & Casting)",
+                                "goal": "Benutzereingaben richtig verarbeiten.",
+                                "why": "Der Befehl `input()` holt IMMER Text. Auch wenn du eine Zahl eingibst. Wir brauchen einen \"Transformer\" (`int` oder `float`), um damit rechnen zu können.",
+                                "instruction": "Wir bauen jetzt den Taschenrechner-Input.\n1.  Hole den Input (Text).\n2.  Wandle ihn in eine Zahl um (`float` für Kommazahlen).\n3.  Rechne damit.",
+                                "code": "# 1. INPUT: Wir holen Text\neingabe1 = input(\"Gib die erste Zahl ein: \") \n\n# 2. TRANSFORM: Text zu Kommazahl (float)\nzahl1 = float(eingabe1)\n\n# ... oder Profi-Tipp: Beides in einer Zeile!\nzahl2 = float(input(\"Gib die zweite Zahl ein: \"))\n\n# 3. PROCESS: Rechnen (jetzt geht es, weil es Zahlen sind!)\nsumme = zahl1 + zahl2\n\n# 4. OUTPUT: Ergebnis zeigen\nprint(f\"Das Ergebnis ist: {summe}\")",
+                                "checkpoint": " Führe den Code aus. Jetzt sollte `10 + 5` wirklich `15.0` ergeben!"
+                        },
+                        {
+                                "number": 5,
+                                "title": "Integration (Dein Projekt)",
+                                "goal": "Den vollständigen Super-Rechner bauen.",
+                                "why": "Jetzt setzen wir alle Teile (Input, Variables, Casting, Math, Output) zusammen.",
+                                "instruction": "Tippe den folgenden Code ab (nicht kopieren!). Versuche dir bei jeder Zeile zu erklären, was gerade passiert (\"Hier hole ich Input...\", \"Hier rechne ich...\").",
+                                "code": "print(\"🧮 SUPER-RECHNER 3000\")\nprint(\"---------------------\")\n\n# 1. Input holen & direkt umwandeln\nx = float(input(\"Erste Zahl: \"))\ny = float(input(\"Zweite Zahl: \"))\n\n# 2. Verarbeiten\nplus = x + y\nminus = x - y\nmal = x * y\ngeteilt = x / y\n\n# 3. Output (mit f-Strings für schöne Formatierung)\n# f\"...\" erlaubt uns, Variablen direkt in den Text einzubauen\nprint(f\"\\nErgebnisse für {x} und {y}:\")\nprint(f\"➕ Summe:      {plus}\")\nprint(f\"➖ Differenz:  {minus}\")\nprint(f\"✖️ Produkt:    {mal}\")\nprint(f\"➗ Quotient:   {geteilt}\")",
+                                "checkpoint": " Funktioniert dein Rechner? Teste ihn mit Kommazahlen (z.B. 5.5 und 2)!"
+                        },
+                        {
+                                "number": 6,
+                                "title": "Challenge Time!",
+                                "goal": "Das Gelernte auf neue Probleme anwenden.",
+                                "why": "Nur durch Selbermachen lernst du wirklich.",
+                                "instruction": "Wähle eine der Challenges und setze sie um:",
+                                "code": "# Hier dein Challenge-Code:\nbetrag = float(input(\"Rechnungsbetrag: \"))\n# ... dein Code ...",
+                                "checkpoint": " Hast du eine Challenge geschafft? Herzlichen Glückwunsch!"
+                        }
+                ]
+        },
+        {
+                "id": 2,
+                "weekId": 1,
+                "title": "Strings & der Namensgenerator",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Strings & der Namensgenerator",
+                        "description": "Erstelle ein Programm, das Text verarbeitet und völlig neue Namen erfindet.",
+                        "goals": [
+                                "Perlenketten-Modell: Strings sind Buchstaben-Ketten mit Index.",
+                                "0-Indexing: Computer zählen ab 0 (Erster Buchstabe = 0).",
+                                "Methoden: `.upper()`, `.lower()` (verändern nicht Original, geben neu zurück).",
+                                "Slicing: `[Start:Ende]` schneidet Teile aus (Ende exklusive).",
+                                "Concatenation: `+` klebt Strings zusammen."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Die Perlenkette)",
+                                "goal": "Verstehen, wie Computer Text eigentlich sehen.",
+                                "why": "Für dich ist \"Hallo\" ein Wort. Für den Computer ist es eine **Kette von einzelnen Buchstaben**, die fest miteinander verbunden sind. Und jeder Buchstabe hat eine **feste Adresse** (Index).",
+                                "instruction": "Stell dir den Namen \"PYTHON\" vor. Jeder Buchstabe hat eine Nummer, beginnend bei **0**:",
+                                "code": "",
+                                "checkpoint": " Merk dir diesen Satz: \"In der Informatik fangen wir IMMER bei 0 an zu zählen!\" (Der erste Buchstabe ist Nummer 0)."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Strings erstellen & kleben",
+                                "goal": "Texte definieren und verbinden (`Concatenation`).",
+                                "why": "Oft müssen wir Texte zusammenbauen (z.B. Vorname + Nachname). Dafür nutzen wir das `+` Zeichen. Bei Zahlen rechnet es, bei Text \"klebt\" es.",
+                                "instruction": "1.  Hole zwei Eingaben.\n2.  Klebe sie mit einem Leerzeichen dazwischen zusammen.",
+                                "code": "# Strings brauchen Anführungszeichen!\nvorname = input(\"Vorname: \")\nnachname = input(\"Nachname: \")\n\n# Wir kleben: Vorname + Leerzeichen + Nachname\n# ACHTUNG: Vergiss das \" \" in der Mitte nicht, sonst klebt es direkt zusammen!\nvoller_name = vorname + \" \" + nachname \n\nprint(f\"Hallo, {voller_name}!\")",
+                                "checkpoint": " Wenn du \"Max\" und \"Müller\" eingibst, muss \"Max Müller\" rauskommen. Ohne das `\" \"` wäre es \"MaxMüller\"."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Die Werkzeugkiste (Methoden)",
+                                "goal": "Text verändern (Groß/Klein), ohne ihn neu zu tippen.",
+                                "why": "Benutzer geben Chaos ein (\"mAx\", \"MAX\", \"max\"). Mit Methoden (`.functions`) räumen wir auf.",
+                                "instruction": "Nutze `.upper()` (alles groß), `.lower()` (alles klein) und `.title()` (Erster Buchstabe groß).",
+                                "code": "text = \"Das ist Ein TeSt\"\n\n# Wir wenden Methoden an\ngross = text.upper()   # DAS IST EIN TEST\nklein = text.lower()   # das ist ein test\ntitel = text.title()   # Das Ist Ein Test\n\nprint(gross)\nprint(klein)\nprint(titel)\n\n# Original ist unverändert!\nprint(f\"Original war: {text}\")",
+                                "checkpoint": " Warum geben wir `text` nicht direkt aus? Weil `text.upper()` alleine nichts speichert! Wir müssen das Ergebnis in einer Variable (`gross`) auffangen."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Das Adress-System (Indexing)",
+                                "goal": "Einzelne Buchstaben aus der Kette herauspicken.",
+                                "why": "Manchmal brauchen wir nur den ersten Buchstaben (Initialen) oder den letzten. Dafür nutzen wir eckige Klammern `[]` mit der Adresse.",
+                                "instruction": "Erinnere dich an das Modell: Der ERSTE Buchstabe hat die Adresse **0**.\nPython hat auch einen Trick: `-1` ist immer der **letzte** Buchstabe.",
+                                "code": "name = \"Python\"\n\nerste = name[0]   # P (Adresse 0)\nzweite = name[1]  # y (Adresse 1)\nletzte = name[-1] # n (Trick für Letzte!)\n\nprint(f\"Anfang: {erste}\")\nprint(f\"Ende: {letzte}\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 5,
+                                "title": "Der Schneider (Slicing)",
+                                "goal": "Teile ausschneiden (nicht nur einen Buchstaben).",
+                                "why": "Wir wollen oft einen Teil-String haben (z.B. die ersten 3 Zeichen).",
+                                "instruction": "Wir schneiden \"Pyt\" aus \"Python\".\nStart: 0 ('P')\nEnde: 3 ('h'). Python stoppt VOR 3. Also bekommen wir 0, 1, 2 ('P', 'y', 't').",
+                                "code": "wort = \"Programmieren\"\n\n# Die ersten 4 Zeichen (0 bis 4)\n# Stoppt VOR Index 4!\nanfang = wort[0:4]  # \"Prog\"\n\n# Ab Index 4 bis zum Ende\nrest = wort[4:]     # \"rammieren\" (Leer lassen = bis Ende)\n\n# Alles rückwärts (Spezial-Trick)\nrueckwaerts = wort[::-1]\n\nprint(anfang)\nprint(rest)\nprint(rueckwaerts)",
+                                "checkpoint": " `wort[0:3]` gibt die ersten 3 Buchstaben. Merkregel: Die zweite Zahl sagt, WIE VIELE Buchstaben es sind (wenn man bei 0 startet)."
+                        },
+                        {
+                                "number": 6,
+                                "title": "Integration (Namensgenerator)",
+                                "goal": "Ein Programm, das aus zwei Namen einen neuen \"Super-Namen\" baut.",
+                                "why": "",
+                                "instruction": "Wir nehmen die erste Hälfte vom Vornamen und die zweite Hälfte vom Nachnamen.\nDafür brauchen wir `len()` (Länge), Indexing, Slicing und Math (`// 2`).",
+                                "code": "print(\"--- SUPER-NAMEN GENERATOR ---\")\nv = input(\"Vorname: \")\nn = input(\"Nachname: \")\n\n# Längen berechnen\nlen_v = len(v)\nlen_n = len(n)\n\n# Die Mitte finden (wir nutzen // für Ganzzahlen, Indizes müssen ganz sein!)\nmitte_v = len_v // 2\nmitte_n = len_n // 2\n\n# Slicing: Anfang bis Mitte\nteil1 = v[0:mitte_v]\n\n# Slicing: Mitte bis Ende\nteil2 = n[mitte_n:]\n\n# Zusammenkleben\nsupername = teil1 + teil2\n\nprint(f\"Dein Supername ist: {supername}\")",
+                                "checkpoint": " Teste es mit \"Max\" und \"Mustermann\"."
+                        },
+                        {
+                                "number": 7,
+                                "title": "Challenge Time!",
+                                "goal": "Problemlösen üben!",
+                                "why": "",
+                                "instruction": "Wähle eine Aufgabe:",
+                                "code": "# Dein Challenge Code hier\npasswort = input(\"Passwort: \")",
+                                "checkpoint": " Geschafft?"
+                        }
+                ]
+        },
+        {
+                "id": 3,
+                "weekId": 1,
+                "title": "Entscheidungen (If/Else) & Der Chatbot",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Entscheidungen (If/Else) & Der Chatbot",
+                        "description": "Baue einen Chatbot, der versteht, wie du dich fühlst, und darauf intelligent reagiert.",
+                        "goals": [
+                                "If-Elif-Else: Die Weichenstellung im Code.",
+                                "Indentation: Einrückung definiert Blöcke (VIP-Bereich).",
+                                "Booleans: Wahr (`True`) oder Falsch (`False`).",
+                                "Operatoren: `==` (gleich), `!=` (ungleich), `>`, `<`.",
+                                "Logik: `and` (beide), `or` (einer), `not` (Gegenteil).",
+                                "Verschachtelung: If in If (Kaffee-Beispiel)."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Die Weiche)",
+                                "goal": "Verstehen, wie ein Programm \"Entscheidungen\" trifft.",
+                                "why": "Bisher lief dein Code stur von oben nach unten durch. Wie ein Wasserfall.",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": " Der Code im \"Ja\"-Pfad wird NUR ausgeführt, wenn die Bedingung wahr ist. Sonst wird er komplett übersprungen."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Der Türsteher (If & Einrückung)",
+                                "goal": "Einen Code-Block nur unter einer Bedingung ausführen.",
+                                "why": "Wichtigste Regel in Python: **Die Einrückung (Indentation)**.",
+                                "instruction": "1.  Starte mit `if bedingung:`. Vergiss den Doppelpunkt `:` nicht!\n2.  Drücke Enter. Die nächste Zeile MUSS eingerückt sein (Tab oder 4 Leerzeichen).",
+                                "code": "alter = int(input(\"Wie alt bist du? \"))\n\nif alter >= 18:\n    # Dieser Block ist der VIP-Bereich\n    print(\"✅ Eintritt erlaubt!\")\n    print(\"Hier ist dein Bier 🍺\")\n\nprint(\"Das hier wird IMMER ausgeführt (nicht mehr eingerückt).\")",
+                                "checkpoint": " Teste es mit `15` (nichts passiert) und `25` (Eintritt erlaubt). Siehst du, wie der eingerückte Teil übersprungen wird?"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Die Alternative (Else)",
+                                "goal": "Ein \"Entweder - Oder\" Szenario bauen.",
+                                "why": "Oft wollen wir: \"Wenn Ja, mach A. Wenn Nein, mach B.\"",
+                                "instruction": "",
+                                "code": "if alter >= 18:\n    print(\"🍺 Hier ist dein Bier.\")\nelse:\n    # Das hier passiert NUR, wenn alter < 18 ist\n    print(\"🧃 Hier ist dein Apfelsaft.\")\n    \nprint(\"Prost!\")",
+                                "checkpoint": " Es wird NIEMALS beides ausgegeben. Es ist immer genau einer der beiden Wege."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Der Verteiler (Elif)",
+                                "goal": "Mehr als zwei Optionen prüfen (Kaskade).",
+                                "why": "Das Leben ist nicht nur Schwarz/Weiß. Wenn wir mehrere Möglichkeiten haben (Kind, Teenager, Erwachsener), nutzen wir `elif` (else if - sonst wenn).",
+                                "instruction": "",
+                                "code": "note = int(input(\"Welche Note hast du (1-6)? \"))\n\nif note == 1:\n    print(\"🥇 Streber!\")\nelif note == 2:\n    print(\"🥈 Gut gemacht!\")\nelif note == 3:\n    print(\"🥉 Passt schon.\")\nelif note == 4:\n    print(\"😬 Gewinn ist Gewinn.\")\nelse:\n    print(\"💀 RIP.\")\n# Falsche Reihenfolge!\npunkte = 95\n\nif punkte > 50:\n    print(\"Bestanden\")\nelif punkte > 90:\n    print(\"Bestnote!\") ",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 5,
+                                "title": "Logik-Gatter (And / Or)",
+                                "goal": "Mehrere Bedingungen gleichzeitig prüfen.",
+                                "why": "Manchmal reicht eine Frage nicht.",
+                                "instruction": "",
+                                "code": "stimmung = input(\"Wie gehts? \").lower()\nwetter = input(\"Wie ist das Wetter? \").lower()\n\n# AND: Beides muss stimmen\nif stimmung == \"gut\" and wetter == \"sonne\":\n    print(\"Perfekter Tag für den Park! 🌳\")\n\n# OR: Eins reicht\nelif stimmung == \"schlecht\" or wetter == \"regen\":\n    print(\"Netflix & Chill Zeit 📺\")\n\nelse:\n    print(\"Ganz normaler Tag.\")",
+                                "checkpoint": " Was passiert bei `gut` und `regen`? (Zweiter Block, weil `rain` das `or` wahr macht? Nein, warte... prüf es nach!) Lösung: Bei `gut` + `regen`: 1. `if gut and sonne` -> False (wegen sonne). 2. `elif schlecht or regen` -> True (wegen regen). -> Netflix Zeit!"
+                        },
+                        {
+                                "number": 6,
+                                "title": "Integration (Der Mood-Chatbot)",
+                                "goal": "Ein empathischer Roboter.",
+                                "why": "",
+                                "instruction": "Kombiniere Input, If/Elif/Else und String-Methoden.",
+                                "code": "print(\"🤖 EMO-BOT 2000\")\nname = input(\"Wer bist du? \")\n\nif name == \"Maurice\" or name == \"Admin\":\n    print(\"🫡 Hallo Chef!\")\nelse:\n    print(f\"Hallo {name}.\")\n\nmood = input(\"Wie fühlst du dich? (gut/mies/müde) \").lower()\n\nif \"gut\" in mood or \"super\" in mood:\n    print(\"Das freut mich! 🎉\")\nelif \"mies\" in mood or \"schlecht\" in mood:\n    print(\"Oh nein. Hier ist ein Keks 🍪\")\nelif \"müde\" in mood:\n    print(\"☕ Kaffee wird zubereitet...\")\n    if \"spät\" in input(\"Ist es spät? \"): # Verschachteltes IF!\n        print(\"Dann geh besser schlafen!\")\n    else:\n        print(\"Koffein kommt sofort!\")\nelse:\n    print(\"Interessant. Erzähl mir mehr.\")",
+                                "checkpoint": " Versuche den Bot auszutricksen. Was passiert, wenn du \"Mir geht es super gut\" schreibst? (Der `in` Operator hilft hier!)"
+                        },
+                        {
+                                "number": 7,
+                                "title": "Challenge Time!",
+                                "goal": "Logik-Muskel trainieren.",
+                                "why": "",
+                                "instruction": "Wähle eine Aufgabe:",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 4,
+                "weekId": 1,
+                "title": "To-Do Liste (Konsole)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "To-Do Liste (Konsole)",
+                        "description": "Erstelle eine interaktive To-Do Liste, die Aufgaben speichern, anzeigen und löschen kann.",
+                        "goals": [
+                                "Listen: Variable mit vielen Fächern (`[a, b, c]`).",
+                                "0-Index: Auch Listen fangen bei 0 an.",
+                                ".append(): Anfügen ans Ende.",
+                                ".remove(): Löschen nach Inhalt (sucht erstes Vorkommen).",
+                                ".pop(): Löschen nach Index (und gibt den Wert zurück).",
+                                "len(): Anzahl der Elemente zählen.",
+                                "Listen: Mehrere Werte in einer Variable `[]`",
+                                "List-Methoden: `.append()`, `.insert()`, `.remove()`, `.pop()`",
+                                "Indexierung: Zugriff auf Elemente mit `[0]`, `[1]`, usw.",
+                                "len(): Länge einer Liste ermitteln",
+                                "in-Operator: Prüfen ob Element in Liste ist",
+                                "range(): Zahlenfolgen erstellen",
+                                ".isdigit(): Prüfen ob String eine Zahl ist"
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Das Regal)",
+                                "goal": "Verstehen, wie Computer viele Daten auf einmal speichern.",
+                                "why": "Eine Variable ist wie ein Schuhkarton (passt nur eine Sache rein).",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": " Auch hier gilt: Das erste Fach hat die Nummer **0**!"
+                        },
+                        {
+                                "number": 2,
+                                "title": "Das Regal bauen & lesen",
+                                "goal": "Eine Liste erstellen und Dinge herausholen.",
+                                "why": "",
+                                "instruction": "1.  Listen brauchen eckige Klammern `[]`.\n2.  Elemente werden mit Komma `,` getrennt.\n3.  Zugriff erfolgt über den Index `[0]`.",
+                                "code": "# Eine Liste mit 3 Strings\nhelden = [\"Spider-Man\", \"Batman\", \"Wonder Woman\"]\n\n# Die ganze Liste drucken\nprint(helden)\n\n# Nur den ersten Helden holen (Index 0)\nliebling = helden[0]\nprint(f\"Mein Favorit: {liebling}\")\n\n# Wie viele sind es?\nanzahl = len(helden)\nprint(f\"Anzahl Helden: {anzahl}\")",
+                                "checkpoint": " Was passiert bei `helden[3]`? (Nicht 0,1,2... 3 gibt es nicht -> IndexError!)"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Das Regal füllen (Append)",
+                                "goal": "Neue Dinge hinzufügen.",
+                                "why": "Unsere To-Do Liste soll wachsen.",
+                                "instruction": "",
+                                "code": "todos = []  # Leeres Regal\n\n# Wir packen Sachen rein\ntodos.append(\"Python lernen\")\ntodos.append(\"Einkaufen\")\ntodos.append(\"Schlafen\")\n\nprint(\"Meine Aufgaben:\")\nprint(todos)",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 4,
+                                "title": "Aufräumen (Remove & Pop)",
+                                "goal": "Dinge löschen.",
+                                "why": "Erledigte Aufgaben müssen weg. Es gibt zwei Wege:",
+                                "instruction": "",
+                                "code": "# Wir haben: [\"Python lernen\", \"Einkaufen\", \"Schlafen\"]\n\n# 1. Methode: Remove (Sucht den Text und löscht ihn)\ntodos.remove(\"Schlafen\") # Wer schläft schon?\nprint(todos)\n\n# 2. Methode: Pop (Löscht an einer Position)\nerledigt = todos.pop(0) # Das erste Element rausnehmen\nprint(f\"Erledigt: {erledigt}\")\nprint(f\"Noch offen: {todos}\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 5,
+                                "title": "Integration (Der Task-Manager)",
+                                "goal": "Eine interaktive App bauen.",
+                                "why": "",
+                                "instruction": "Wir bauen ein Programm, das in einer Endlosschleife läuft (Schleifen kommen morgen, heute tricksen wir mit Copy-Paste oder einer einfachen Struktur).",
+                                "code": "print(\"--- TASK MASTER 3000 ---\")\ntasks = [\"Müll rausbringen\", \"Blumen gießen\"]\n\nprint(f\"Aktuelle Aufgaben: {tasks}\")\n\n# 1. Neue Aufgabe\nneu = input(\"Was willst du noch erledigen? \")\ntasks.append(neu)\nprint(\"Hinzugefügt! ✅\")\n\n# 2. Status zeigen\nprint(f\"\\nDeine Liste hat jetzt {len(tasks)} Einträge.\")\nprint(f\"Als nächstes zu tun (Index 0): {tasks[0]}\")\nprint(f\"Als letztes zu tun (Index -1): {tasks[-1]}\")\n\n# 3. Eine Aufgabe erledigen (wir nehmen immer die erste)\ninput(\"Drücke Enter, um die erste Aufgabe zu erledigen...\")\nerledigt = tasks.pop(0)\nprint(f\"Super! '{erledigt}' ist erledigt.\")\n\nprint(f\"Verbleibend: {tasks}\")",
+                                "checkpoint": " Führe das Programm aus. Füge \"Coden\" hinzu. Erledige \"Müll rausbringen\"."
+                        },
+                        {
+                                "number": 6,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": " - Füge 3 Aufgaben hinzu - Wähle Aufgabe \"2\" zum Löschen - Die mittlere Aufgabe sollte verschwinden, die anderen rutschen nach"
+                        }
+                ]
+        },
+        {
+                "id": 5,
+                "weekId": 1,
+                "title": "Schleifen (Der Roboter)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Schleifen (Der Roboter)",
+                        "description": "Baue einen \"Roboter\", der Aufgaben für dich wiederholt, und einen 1x1 Trainer.",
+                        "goals": [
+                                "For-Schleife: Wiederholt Code für jedes Element.",
+                                "Range: Erzeugt Zahlenreihen (`range(start, ende)`).",
+                                "Akku-Pattern: Variable vor der Schleife, die drinnen aktualisiert wird.",
+                                "Break: Schleife sofort beenden.",
+                                "Continue: Aktuellen Durchlauf überspringen."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Roboter)",
+                                "goal": "Verstehen, warum wir Schleifen brauchen.",
+                                "why": "Informatiker sind faul. Wenn wir 100 E-Mails senden müssen, klicken wir nicht 100 Mal auf \"Senden\". Wir schreiben EINE Schleife, die das 100 Mal erledigt.",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": " Die Schleife läuft solange, wie Elemente da sind. Dann hört sie automatisch auf."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Die Liste abarbeiten (For-Each)",
+                                "goal": "Jedes Element einer Liste einmal \"anfassen\".",
+                                "why": "Das ist der häufigste Anwendungsfall. \"Für jede E-Mail in der Liste: Sende sie.\"",
+                                "instruction": "`for <variable> in <liste>:`\nDie `<variable>` ist der Platzhalter für das aktuelle Ding, das der Roboter gerade in der Hand hält.",
+                                "code": "# Unsere Teile auf dem Fließband\nnamen = [\"Tick\", \"Trick\", \"Track\"]\n\nprint(\"--- Roboter startet ---\")\n\n# Der Loop\nfor ente in namen:\n    # 'ente' ist die Variable, die sich JEDES MAL ändert\n    print(f\"Hallo {ente}!\")\n    print(\"Code wird ausgeführt...\")\n\nprint(\"--- Roboter fertig ---\")",
+                                "checkpoint": " Der Code im Block (eingerückt) wird 3x ausgeführt. Einmal für Tick, einmal für Trick, einmal für Track."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Der Zähler (Range)",
+                                "goal": "Etwas genau X mal wiederholen (ohne Liste).",
+                                "why": "Manchmal haben wir keine Liste, sondern wollen einfach \"10 mal Hallo\" sagen. Dafür gibt es `range()` (Bereich).",
+                                "instruction": "",
+                                "code": "# range(5) erzeugt die Zahlen: 0, 1, 2, 3, 4\n# Startet bei 0, endet VOR 5!\n\nprint(\"Countdown läuft:\")\nfor nummer in range(5):\n    print(f\"Nummer: {nummer}\")\n\n# range(Start, Ende-Exklusiv)\nprint(\"\\nVon 1 bis 10:\")\nfor i in range(1, 11): # 1 bis 10\n    print(i)",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 4,
+                                "title": "Die Summen-Maschine (Der Akku)",
+                                "goal": "Werte über mehrere Schleifendurchläufe hinweg speichern.",
+                                "why": "Wir wollen oft etwas zusammenrechnen (z.B. Gesamtkosten).",
+                                "instruction": "",
+                                "code": "kosten = [10, 5, 30]\nsumme = 0  # Startet leer (WICHTIG: Vor der Schleife!)\n\nprint(f\"Start-Summe: {summe}\")\n\nfor preis in kosten:\n    summe = summe + preis  # Alten Wert nehmen + neuen Preis\n    print(f\"Habe {preis}€ addiert. Neue Summe: {summe}\")\n\nprint(f\"End-Ergebnis: {summe}€\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 5,
+                                "title": "Bremse und Turbo (Break & Continue)",
+                                "goal": "Die Schleife manuell steuern.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "zahlen = [10, 0, 50, 4, 100]\n\nprint(\"--- Analyse startet ---\")\n\nfor z in zahlen:\n    if z == 0:\n        print(\"Fehler: Null gefunden! Überspringe...\")\n        continue  # Geht sofort zum Start der Schleife zurück (nächste Zahl)\n        \n    if z > 80:\n        print(\"Alarm: Zahl zu groß! Abbbruch!\")\n        break  # Stoppt die ganze Schleife sofort\n\n    print(f\"Verarbeite: {z}\")\n\nprint(\"--- Fertig ---\")",
+                                "checkpoint": " - 10: Verarbeitet - 0: Übersprungen (continue) - 50: Verarbeitet - 4: Verarbeitet - 100: Abbruch (break) -> Schleife vorbei."
+                        },
+                        {
+                                "number": 6,
+                                "title": "Integration (Der 1x1 Trainer)",
+                                "goal": "Ein Programm, das uns das kleine 1x1 abfragt.",
+                                "why": "",
+                                "instruction": "Wir nutzen `range(1, 11)` für die Zahlen 1-10. Wir berechnen das Ergebnis und lassen den User raten.",
+                                "code": "basis = int(input(\"Welche Reihe möchtest du üben? (z.B. 7): \"))\npunkte = 0\n\nprint(f\"\\nTraining für die {basis}er-Reihe startet!\")\n\nfor i in range(1, 11): # 1 bis 10\n    richtiges_ergebnis = basis * i\n    \n    # User fragen\n    antwort = int(input(f\"Was ist {basis} * {i}? \"))\n    \n    if antwort == richtiges_ergebnis:\n        print(\"✅ Richtig!\")\n        punkte += 1 # Kurzform für: punkte = punkte + 1\n    else:\n        print(f\"❌ Falsch. Es war {richtiges_ergebnis}\")\n\nprint(\"\\n--- Auswertung ---\")\nprint(f\"Du hast {punkte} von 10 Punkten.\")\n\nif punkte == 10:\n    print(\"🥇 Perfekt!\")\nelif punkte >= 5:\n    print(\"👍 Ganz okay.\")\nelse:\n    print(\"📚 Zurück in die Schule!\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 7,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 6,
+                "weekId": 1,
+                "title": "Das Zahlen-Ratespiel (While & Random)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Das Zahlen-Ratespiel (While & Random)",
+                        "description": "Baue ein Spiel, bei dem der Computer eine Zahl wählt und du sie erraten musst.",
+                        "goals": [
+                                "While-Schleife: Wiederholung abhängig von einer Bedingung.",
+                                "Endlosschleife: Wenn die Bedingung nie `False` wird (Gefahr!).",
+                                "import random: Zufallsgenerator nutzen.",
+                                "Game Loop: Das Konzept einer Hauptschleife, die das Spiel am Leben hält.",
+                                "Verschachtelung: Schleifen in Schleifen für komplexe Abläufe."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Türsteher)",
+                                "goal": "Verstehen, wie `while` funktioniert.",
+                                "why": "`for`-Schleifen sind für Listen (\"Für jeden Apfel...\").",
+                                "instruction": "",
+                                "code": "antwort = \"\"\n\n# Läuft solange, bis man \"ja\" schreibt\nwhile antwort != \"ja\":\n    antwort = input(\"Sind wir schon da? \")\n\nprint(\"Endlich!\")",
+                                "checkpoint": " Was passiert, wenn du gleich am Anfang \"ja\" schreibst? (Die Schleife läuft gar nicht erst los!)"
+                        },
+                        {
+                                "number": 2,
+                                "title": "Der Zufalls-Generator",
+                                "goal": "Den Computer unberechenbar machen.",
+                                "why": "Ein Spiel ist langweilig, wenn wir die Antwort kennen. Python hat dafür das Modul `random`.",
+                                "instruction": "",
+                                "code": "import random  # Wir laden das 'random' Werkzeug\n\n# Eine Zufallszahl zwischen 1 und 6 (wie ein Würfel)\nwürfel = random.randint(1, 6)\nprint(f\"Du hast eine {würfel} gewürfelt!\")\n\n# Eine Zufallszahl zwischen 1 und 100\nlotto = random.randint(1, 100)\nprint(f\"Deine Glückszahl: {lotto}\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 3,
+                                "title": "Das Spiel-Skelett",
+                                "goal": "Eine Zahl generieren und den User raten lassen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import random\n\ngeheimzahl = random.randint(1, 10)\ntipp = 0  # Irgendein Startwert, der NICHT die Geheimzahl ist\n\nprint(\"🕵️ Ich habe eine Zahl zwischen 1 und 10.\")\n\nwhile tipp != geheimzahl:\n    tipp = int(input(\"Rate mal: \"))\n    \n    if tipp == geheimzahl:\n        print(\"🎉 Richtig!\")\n    else:\n        print(\"❌ Leider falsch.\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 4,
+                                "title": "Heiß & Kalt (Logik)",
+                                "goal": "Dem Spieler Hinweise geben.",
+                                "why": "Nur \"Falsch\" ist frustrierend bei großen Zahlen. Wir nutzen `if/elif`, um zu helfen.",
+                                "instruction": "",
+                                "code": "import random\n\ngeheimzahl = random.randint(1, 100)\ntipp = 0\nversuche = 0\n\nprint(\"🕵️ Ich habe eine Zahl zwischen 1 und 100.\")\n\nwhile tipp != geheimzahl:\n    tipp = int(input(\"Dein Tipp: \"))\n    versuche = versuche + 1  # Mitzählen\n    \n    if tipp < geheimzahl:\n        print(\"Zu klein! 📈\")\n    elif tipp > geheimzahl:\n        print(\"Zu groß! 📉\")\n    else:\n        print(f\"🎉 GEWONNEN! Du hast {versuche} Versuche gebraucht.\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 5,
+                                "title": "Integration (Game Loop)",
+                                "goal": "Das Spiel wiederholbar machen (\"Nochmal?\").",
+                                "why": "Wir wollen das Programm nicht jedes Mal neu starten. Wir packen alles in eine \"Mutter-Schleife\".",
+                                "instruction": "",
+                                "code": "import random\n\nspielen = True  # Schalter für die Hauptschleife\n\nwhile spielen:\n    # --- Hier beginnt eine neue Runde ---\n    geheimzahl = random.randint(1, 100)\n    tipp = 0\n    versuche = 0\n    \n    print(\"\\n🎲 NEUES SPIEL (1-100) 🎲\")\n    \n    # Die Rate-Schleife (Innere Schleife)\n    while tipp != geheimzahl:\n        tipp = int(input(\"Rate: \"))\n        versuche += 1\n        \n        if tipp < geheimzahl:\n            print(\"Zu klein!\")\n        elif tipp > geheimzahl:\n            print(\"Zu groß!\")\n        else:\n            print(f\"🎉 Treffer nach {versuche} Versuchen!\")\n    \n    # --- Ende der Runde, fragen ob nochmal ---\n    nochmal = input(\"Nochmal? (ja/nein): \")\n    \n    if nochmal == \"nein\":\n        spielen = False  # Schalter umlegen -> Hauptschleife endet\n        print(\"Bis zum nächsten Mal! 👋\")",
+                                "checkpoint": " Hier siehst du \"Nested Loads\" (Schleife in Schleife). Die Innere läuft, bis die Zahl erraten ist. Die Äußere läuft, bis der Spieler \"nein\" sagt."
+                        }
+                ]
+        },
+        {
+                "id": 7,
+                "weekId": 1,
+                "title": "Funktionen (Die Pizza-Maschine)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Funktionen (Die Pizza-Maschine)",
+                        "description": "Baue einen intelligenten BMI-Rechner, indem du eigene Werkzeuge (Funktionen) erstellst.",
+                        "goals": [
+                                "def: Das Zauberwort zum Definieren.",
+                                "Parameter: Variablen, die man in die Funktion hineinwirft.",
+                                "Return: Die Antwort der Funktion (wichtig zum Weiterrechnen!).",
+                                "Scope: Was in der Funktion passiert, bleibt in der Funktion.",
+                                "Modularität: Große Probleme in kleine Funktionen zerlegen.",
+                                "Funktionen definieren: `def funktionsname():`",
+                                "Parameter: Eingabe-Werte an Funktionen übergeben",
+                                "Return: Werte aus Funktionen zurückgeben",
+                                "Docstrings: Funktionen dokumentieren mit `\"\"\"`",
+                                "Mehrere Rückgabewerte: Mit Tupel `return a, b`",
+                                "Try-Except: Fehlerbehandlung (Basis)",
+                                "Single Responsibility: Eine Funktion = eine Aufgabe",
+                                "main(): Hauptfunktion als Einstiegspunkt"
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Die Maschine)",
+                                "goal": "Verstehen, was eine Funktion eigentlich ist.",
+                                "why": "Du willst Code nicht 10x kopieren. Du willst ihn *einmal* schreiben und *immer wieder* benutzen.",
+                                "instruction": "",
+                                "code": "# 1. BAUPLAN (Definition)\n# Wir bringen Python ein neues Wort bei: \"begruesse\"\ndef begruesse():\n    print(\"----------------\")\n    print(\"👋 Hallo Welt!\")\n    print(\"----------------\")\n\n# 2. BENUTZUNG (Aufruf)\n# Erst jetzt passiert etwas!\nprint(\"Start...\")\nbegruesse() \nbegruesse()\nprint(\"Ende.\")",
+                                "checkpoint": " Siehst du, wie der Code drei Zeilen ausführt, obwohl du nur ein Wort (`begruesse()`) schreibst? Das ist **Abstraktion**!"
+                        },
+                        {
+                                "number": 2,
+                                "title": "Zutaten geben (Parameter)",
+                                "goal": "Der Funktion Informationen geben.",
+                                "why": "Eine Begrüßung ist netter mit Namen. Eine Pizza-Maschine braucht Teig und Belag.",
+                                "instruction": "",
+                                "code": "# In die Klammer schreiben wir den Platzhalter (Variable)\ndef hallo(name):\n    print(f\"Hallo {name}, schön dich zu sehen!\")\n\n# Beim Aufrufen werfen wir den echten Wert rein\nhallo(\"Anna\")\nhallo(\"Bernd\")\nhallo(\"Cleo\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 3,
+                                "title": "Ergebnisse bekommen (Return)",
+                                "goal": "Einen Wert ZURÜCK erhalten (nicht nur dumpf ausdrucken).",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# Schlecht (nur Print):\ndef addiere_print(a, b):\n    print(a + b)\n\n# Gut (Return):\ndef addiere_return(a, b):\n    ergebnis = a + b\n    return ergebnis  # Hier! Nimm das!\n\n# Test:\nx = addiere_return(5, 5)  # x ist jetzt 10\nprint(f\"Das Ergebnis verdoppelt ist: {x * 2}\")\n\ny = addiere_print(5, 5)\n# print(f\"Das geht nicht: {y * 2}\") # FEHLER! y ist 'None' (Nichts)",
+                                "checkpoint": " `return` beendet die Funktion sofort. Alles danach wird ignoriert."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Der BMI-Rechner (Zusammenbau)",
+                                "goal": "Ein echtes Programm aus Funktionen bauen.",
+                                "why": "",
+                                "instruction": "Wir brauchen:\n1.  Eine Funktion für Input (sicherstellen, dass es Zahlen sind).\n2.  Eine Funktion für die Rechnung.\n3.  Eine Funktion für die Bewertung (Untergewicht/Normal...).\n4.  Ein Hauptprogramm.",
+                                "code": "# 1. Hilfsfunktion für sicheren Input\ndef kommazahl_holen(frage):\n    while True:\n        try:\n            eingabe = input(frage)\n            zahl = float(eingabe)\n            return zahl\n        except ValueError:\n            print(\"❌ Das war keine Zahl. Bitte z.B. 1.75 eingeben.\")\n\n# 2. Die Rechen-Maschine\ndef bmi_rechnen(gewicht, groesse):\n    bmi = gewicht / (groesse * groesse)\n    return bmi\n\n# 3. Der Arzt (Bewertung)\ndef bewerte_bmi(bmi):\n    if bmi < 18.5:\n        return \"Untergewicht 🍎\"\n    elif bmi < 25:\n        return \"Normalgewicht ✅\"\n    elif bmi < 30:\n        return \"Übergewicht 🍔\"\n    else:\n        return \"Adipositas ⚠️\"\n\n# 4. Das Hauptprogramm (Main)\nprint(\"🏥 DER GESUNDHEITS-CHECK\")\nprint(\"-\" * 30)\n\ng = kommazahl_holen(\"Dein Gewicht (kg): \")\nh = kommazahl_holen(\"Deine Größe (m): \")\n\nmein_bmi = bmi_rechnen(g, h)\nurteil = bewerte_bmi(mein_bmi)\n\nprint(\"-\" * 30)\nprint(f\"Dein BMI ist: {mein_bmi:.2f}\")\nprint(f\"Befund: {urteil}\")",
+                                "checkpoint": " Teste es! - Gewicht: 80, Größe: 1.80 -> BMI ~24.69 (Normal) - Gewicht: 100, Größe: 1.80 -> BMI ~30.86 (Adipositas)"
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+      ]
+    },
+    {
+      id: 2,
+      title: "Woche 2: Datenstrukturen",
+      subtitle: "Listen, Dictionaries & Dateien",
+      description: "Fortgeschrittene Datenstrukturen und wie man mit Dateien arbeitet.",
+      color: "purple",
+      days: [
+        {
+                "id": 1,
+                "weekId": 2,
+                "title": "Kontaktverwaltung mit Dictionaries",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Kontaktverwaltung mit Dictionaries",
+                        "description": "Baue ein digitales Telefonbuch, das Namen, Nummern und E-Mails speichert.",
+                        "goals": [
+                                "Dictionary: `{Key: Value}` für Daten mit Namen.",
+                                "KeyError: Der Feind, den wir mit `.get()` besiegen.",
+                                "Nesting: Dictionaries in Listen (die Basis des Internets!).",
+                                "Datenmodellierung: Wie man echte Objekte (Kontakte) in Code abbildet."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Aktenschrank)",
+                                "goal": "Verstehen, warum Listen nicht immer reichen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# 1. Die alte Welt (Listen)\nperson_liste = [\"Max Mustermann\", 25, \"Berlin\"]\nprint(person_liste[1])  # Was war nochmal [1]? Ah, Alter.\n\n# 2. Die neue Welt (Dictionaries)\n# Syntax: { KEY : VALUE }\nperson = {\n    \"name\": \"Max Mustermann\",\n    \"alter\": 25,\n    \"stadt\": \"Berlin\"\n}\n\n# Zugriff über den NAMEN (Key), nicht über eine Nummer!\nprint(person[\"name\"])\nprint(person[\"stadt\"])",
+                                "checkpoint": " - Dictionaries benutzen geschweifte Klammern `{}`. - Jeder Eintrag braucht einen Schlüssel (`Key`) und einen Wert (`Value`)."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Der \"KeyError\" und der Sicherheitsgurt (.get)",
+                                "goal": "Sicher auf Daten zugreifen.",
+                                "why": "Wenn du in einer Liste `liste[100]` abfragst, gibt es einen Fehler. Beim Dictionary ist es genauso: Wenn du einen Key suchst, den es nicht gibt, stürzt das Programm ab (`KeyError`).",
+                                "instruction": "",
+                                "code": "kontakt = {\n    \"name\": \"Lisa\",\n    \"telefon\": \"0176-12345678\"\n}\n\n# 1. Der harte Weg (Crash möglich!)\n# print(kontakt[\"email\"])  # CRASH! KeyError: 'email'\n\n# 2. Der sichere Weg (.get)\n# \"Versuche 'email' zu holen. Wenn nicht da, gib mir 'Keine Angabe'.\"\nemail = kontakt.get(\"email\", \"Keine Angabe\") \nprint(f\"Email: {email}\")\n\n# 3. Hinzufügen & Ändern\nkontakt[\"email\"] = \"lisa@test.de\"  # Hinzufügen\nkontakt[\"name\"] = \"Lisa Müller\"    # Ändern\n\nprint(kontakt)",
+                                "checkpoint": " Nutze immer `.get()`, wenn du nicht 100% sicher bist, ob der Key existiert!"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Das Telefonbuch (Liste von Dictionaries)",
+                                "goal": "Mehrere Kontakte verwalten.",
+                                "why": "Ein Kontakt ist ein Dictionary. Ein Telefonbuch ist eine **Liste** von Kontakten. Das ist die Standard-Struktur aller modernen Daten (JSON, APIs)!",
+                                "instruction": "",
+                                "code": "telefonbuch = [\n    {\"name\": \"Alice\", \"nummer\": \"110\"},\n    {\"name\": \"Bob\", \"nummer\": \"112\"},\n    {\"name\": \"Charlie\", \"nummer\": \"911\"}\n]\n\n# Zugriff auf Bob (Index 1) und seine Nummer (Key \"nummer\")\nbobs_nummer = telefonbuch[1][\"nummer\"]\nprint(f\"Bobs Nummer: {bobs_nummer}\")\n\n# Iterieren (Durchblättern)\nprint(\"\\n--- Alle Kontakte ---\")\nfor kontakt in telefonbuch:\n    # 'kontakt' ist jedes Mal ein ganzes Dictionary!\n    print(f\"Name: {kontakt['name']}, Tel: {kontakt['nummer']}\")",
+                                "checkpoint": " - Die äußere Klammer ist `[]` (Liste - Ordnung ist wichtig). - Die inneren Klammern sind `{}` (Dictionaries - Struktur ist wichtig)."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Die App entwickeln",
+                                "goal": "Ein Programm, das Kontakte hinzufügt und sucht.",
+                                "why": "",
+                                "instruction": "1.  Starte mit einer leeren Liste.\n2.  Baue eine Schleife (Endlos).\n3.  Frage den Nutzer nach Aktion (Neu / Suchen / Ende).",
+                                "code": "buch = []  # Leeres Telefonbuch\n\nwhile True:\n    print(\"\\n1: Neuer Kontakt | 2: Suchen | 3: Ende\")\n    wahl = input(\"Auswahl: \")\n\n    if wahl == \"1\":\n        # Neuen Kontakt basteln\n        n = input(\"Name: \")\n        t = input(\"Telefon: \")\n        # Als Dictionary verpacken\n        neuer_eintrag = {\"name\": n, \"tel\": t}\n        # Ins Buch (Liste) stecken\n        buch.append(neuer_eintrag)\n        print(\"✅ Gespeichert!\")\n\n    elif wahl == \"2\":\n        suchwort = input(\"Wen suchst du? \")\n        gefunden = False\n        for eintrag in buch:\n            if suchwort in eintrag[\"name\"]:\n                print(f\"📞 Gefunden: {eintrag['tel']}\")\n                gefunden = True\n        \n        if not gefunden:\n            print(\"❌ Niemanden gefunden.\")\n\n    elif wahl == \"3\":\n        print(\"Bye!\")\n        break",
+                                "checkpoint": " Teste die App: Füge zwei Leute hinzu und suche nach einem."
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 2,
+                "weekId": 2,
+                "title": "Lotto-Zahlen (Tupel & Sets)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Lotto-Zahlen (Tupel & Sets)",
+                        "description": "Programmiere eine Lotto-Maschine, die garantiert keine doppelten Zahlen zieht.",
+                        "goals": [
+                                "Tupel `()`: Datentresore, die man nicht ändern kann.",
+                                "Sets `{}`: Bodyguards, die keine Duplikate reinlassen.",
+                                "Unpacking: `x, y = punkt` (Elegant!).",
+                                "Schnittmenge `&`: Das mächtigste Werkzeug für Vergleiche."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Tupel = Steinplatte)",
+                                "goal": "Verstehen, warum manche Daten \"fest\" sein müssen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# 1. Erstellen (Runde Klammern)\nkoordinaten = (52.52, 13.40)\n\n# 2. Lesen (Wie Liste)\nprint(koordinaten[0]) \n\n# 3. Versuch zu ändern (Crash!)\n# koordinaten[0] = 99.0  # TypeError! Geht nicht.\n\n# 4. Unpacking (Der Profi-Trick)\n# Wir packen das Tupel direkt in Variablen aus\nbreitengrad, laengengrad = koordinaten\nprint(f\"Breite: {breitengrad}\")",
+                                "checkpoint": " Benutze Tupel für Dinge, die zusammengehören und sich nicht ändern (Datum, Koordinaten, RGB-Farben)."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Das mentale Modell (Set = Der Türsteher)",
+                                "goal": "Doppelte Daten vermeiden.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# Liste mit Duplikaten\nmeine_liste = [1, 1, 2, 2, 3, 3, 3]\n\n# Verwandlung in ein Set (Duplikate verschwinden!)\nmein_set = set(meine_liste)\nprint(mein_set)  # {1, 2, 3}\n\n# Direktes Erstellen (Geschweifte Klammern wie Dict, aber nur Werte)\nfarben = {\"Rot\", \"Grün\", \"Blau\", \"Rot\"}\nprint(farben)    # \"Rot\" ist nur einmal da!\n\n# Achtung: Keine Indexierung!\n# print(farben[0]) # CRASH! Sets haben keine Ordnung/Index.",
+                                "checkpoint": " `set()` ist der schnellste Weg, Duplikate aus einer Liste zu löschen."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Mengenlehre (Die Magie)",
+                                "goal": "Prüfen, was zwei Gruppen gemeinsam haben.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "freunde_mario = {\"Anna\", \"Ben\", \"Chris\"}\nfreunde_luigi = {\"Ben\", \"Chris\", \"Dora\"}\n\n# 1. Wer kennt BEIDE? (Schnittmenge / Intersection) '&'\ngemeinsame = freunde_mario & freunde_luigi\nprint(f\"Kennen beide: {gemeinsame}\") # {'Ben', 'Chris'}\n\n# 2. Wer kennt NUR Mario? (Differenz) '-'\nnur_mario = freunde_mario - freunde_luigi\nprint(f\"Kennt nur Mario: {nur_mario}\") # {'Anna'}\n\n# 3. Alle zusammen (Vereinigung / Union) '|'\nalle = freunde_mario | freunde_luigi\nprint(f\"Alle Freunde: {alle}\") # Anna, Ben, Chris, Dora (Ben/Chris nur 1x)",
+                                "checkpoint": " Diese Operationen sind extrem schnell und nützlich für Vergleiche."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Der Lotto-Generator",
+                                "goal": "6 Zufallszahlen ziehen - OHNE doppelte!",
+                                "why": "",
+                                "instruction": "Wir nutzen ein Set, weil das Set automatisch verhindert, dass wir zweimal die gleiche Zahl ziehen.",
+                                "code": "import random\n\ndef ziehung_simulieren():\n    trommel = set()  # Leeres Set\n\n    # Solange wir noch keine 6 Zahlen haben...\n    while len(trommel) < 6:\n        kugel = random.randint(1, 49)\n        trommel.add(kugel) # Set nimmt sie nur auf, wenn sie NEU ist\n    \n    # Sortieren für die Anzeige (gibt eine LISTE zurück)\n    return sorted(trommel) \n\ndef gewinn_check(dein_tipp, ziehung):\n    # Wir wandeln alles in Sets um, um zu vergleichen\n    set_tipp = set(dein_tipp)\n    set_ziehung = set(ziehung)\n    \n    # Schnittmenge = Richtige\n    richtige = set_tipp & set_ziehung\n    zahl_richtige = len(richtige)\n    \n    return zahl_richtige, richtige\n\n# --- Hauptprogramm ---\nprint(\"🎰 LOTTO 6 aus 49\")\nprint(\"-\" * 30)\n\nmein_tipp = {1, 7, 13, 22, 30, 45}  # Direkt ein Set\nprint(f\"Dein Tipp:      {sorted(mein_tipp)}\")\n\ngezogen = ziehung_simulieren()\nprint(f\"Gezogene Zahlen:{gezogen}\")\n\nanzahl, treffer = gewinn_check(mein_tipp, gezogen)\nprint(\"-\" * 30)\nprint(f\"Du hast {anzahl} Richtige!\")\nif anzahl > 0:\n    print(f\"Treffer: {treffer}\")",
+                                "checkpoint": " Lass das Programm mehrmals laufen. Du wirst sehen, dass `gezogen` nie doppelte Zahlen enthält."
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 3,
+                "weekId": 2,
+                "title": "Datenfilter mit List Comprehensions",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Datenfilter mit List Comprehensions",
+                        "description": "Lerne die Python-Superkraft: Listen in einer Zeile filtern und verwandeln.",
+                        "goals": [
+                                "List Comprehensions: Listen in einer Zeile erstellen.",
+                                "Mapping: Daten verändern `[x*2 for x in ...]`.",
+                                "Filtering: Daten auswählen `[... if x > 5]`.",
+                                "Clean Code: Kürzerer Code ist oft (nicht immer) besserer Code."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Zauberspruch)",
+                                "goal": "Verstehen, warum wir \"List Comprehensions\" benutzen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "zahlen = [1, 2, 3, 4, 5]\n\n# 1. Der \"langsame\" Weg (Imperativ)\nergebnis = []\nfor z in zahlen:\n    ergebnis.append(z * 2)\nprint(ergebnis)\n\n# 2. Der Python-Weg (Deklarativ)\n# Lies es so: \"Nimm z mal 2 FÜR JEDES z IN zahlen\"\nschnell = [z * 2 for z in zahlen]\nprint(schnell)",
+                                "checkpoint": " Die Syntax ist immer: `[ WAS_TUN for VARIABLE in LISTE ]`."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Transformer (Mapping)",
+                                "goal": "Daten umwandeln.",
+                                "why": "Du hast Rohdaten (z.B. Preise ohne Steuer, Namen klein geschrieben) und willst eine bereinigte Liste.",
+                                "instruction": "",
+                                "code": "namen = [\"max\", \"moritz\", \"leia\"]\n\n# Aufgabe: Alle Namen sollen mit Großbuchstaben anfangen\n# Wir wenden .capitalize() auf JEDEN Namen an\nsauber = [n.capitalize() for n in namen]\n\nprint(f\"Vorher: {namen}\")\nprint(f\"Nachher: {sauber}\")\n\n# Preise formatieren\npreise = [10, 20, 99]\nschilder = [f\"{p} €\" for p in preise]\nprint(schilder) # ['10 €', '20 €', '99 €']",
+                                "checkpoint": " Du sparst dir `ergebnis_liste = []` und `append()`. Das macht den Code viel lesbarer."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Der Filter (Selection)",
+                                "goal": "Nur bestimmte Daten behalten.",
+                                "why": "Du willst aus 1000 Werten nur die positiven, oder nur die User, die \"aktiv\" sind.",
+                                "instruction": "",
+                                "code": "temperaturen = [20, 22, -5, 18, -1, 30]\n\n# \"Gib mir t FÜR JEDES t IN temperaturen WENN t größer 0 ist\"\nsommer = [t for t in temperaturen if t > 0]\nprint(f\"Warm genug: {sommer}\")\n\n# Nur gerade Zahlen\nzahlen = [1, 2, 3, 4, 5, 6]\ngerade = [z for z in zahlen if z % 2 == 0]\nprint(f\"Gerade: {gerade}\")",
+                                "checkpoint": " Die Syntax erweitert sich: `[ WAS_TUN for VAR in LISTE if BEDINGUNG ]`."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Die ultimative Daten-Pipeline",
+                                "goal": "Verwandeln UND Filtern gleichzeitig.",
+                                "why": "",
+                                "instruction": "Wir haben eine Liste von rohen E-Mail-Eingaben. Manche sind ungültig (kein @), manche sind klein geschrieben, manche haben Leerzeichen.\nWir wollen eine saubere Liste.",
+                                "code": "raw_emails = [\"  max@test.de \", \"KEIN_EMAIL\", \"  anna@web.de\", \"Falsch\"]\n\n# Schritt für Schritt in EINER Zeile:\n# 1. n.strip().lower() -> Leerzeichen weg, kleinschreiben\n# 2. if \"@\" in n -> Nur Strings mit @ behalten\n\nclean_emails = [e.strip().lower() for e in raw_emails if \"@\" in e]\n\nprint(\"Rohdaten:\", raw_emails)\nprint(\"Sauber:\", clean_emails)",
+                                "checkpoint": " Das ist Profi-Code! Effizient und (wenn man es einmal verstanden hat) sehr klar."
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 4,
+                "weekId": 2,
+                "title": "Textdatei-Analyzer (Dateien Lesen)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Textdatei-Analyzer (Dateien Lesen)",
+                        "description": "Baue ein Tool, das Texte aus Dateien liest und analysiert.",
+                        "goals": [
+                                "`with open(...)`: Der sichere Weg, Dateien zu öffnen.",
+                                "`.read()`: Alles auf einmal (Vorsicht Speicher!).",
+                                "`for line in f`: Effizientes Zeilen-Lesen.",
+                                "`encoding=\"utf-8\"`: Damit ä, ö, ü funktionieren."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 0,
+                                "title": "Vorbereitung (Daten erzeugen)",
+                                "goal": "Sicherstellen, dass wir eine Datei zum Lesen haben.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# Führe das EINMAL aus, damit die Datei existiert\ntext = \"\"\"Erstes Log\nFehler am Mittwoch\nWarnung am Freitag\nFehler am Sonntag\nErfolg am Montag\"\"\"\n\nwith open(\"test_log.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(text)\n\nprint(\"✅ Datei 'test_log.txt' wurde erstellt!\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Die automatische Tür)",
+                                "goal": "Verstehen, warum wir `with open(...)` benutzen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# RICHTIG:\nwith open(\"test_log.txt\", \"r\", encoding=\"utf-8\") as datei:\n    # Solange wir hier eingerückt sind, ist die Datei offen\n    inhalt = datei.read()\n    print(inhalt)\n\n# Hier ist die Datei automatisch ZU.\n# print(datei.read()) # FEHLER! Datei ist zu.",
+                                "checkpoint": " Benutze NIEMALS `open()` ohne `with`. Es ist den Ärger nicht wert."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Der Staubsauger (Alles lesen)",
+                                "goal": "Den ganzen Inhalt in eine Variable laden.",
+                                "why": "Einfach, aber gefährlich bei riesigen Dateien (RAM voll!).",
+                                "instruction": "",
+                                "code": "with open(\"test_log.txt\", \"r\", encoding=\"utf-8\") as f:\n    alles = f.read()  # Saugt ALLES in einen String\n    \nprint(f\"Die Datei hat {len(alles)} Zeichen.\")\nprint(\"-\" * 20)\nprint(alles[:20]) # Zeige nur die ersten 20 Zeichen",
+                                "checkpoint": " `encoding=\"utf-8\"` ist Pflicht für Umlaute und Emojis!"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Der Scanner (Zeile für Zeile)",
+                                "goal": "Große Dateien Speicher-effizient verarbeiten.",
+                                "why": "Wenn eine Datei 10 GB groß ist, kannst du sie nicht mit `.read()` laden. Aber du kannst sie Zeile für Zeile lesen!",
+                                "instruction": "",
+                                "code": "print(\"🔍 Suche nach FEHLERN:\")\n\nwith open(\"test_log.txt\", \"r\", encoding=\"utf-8\") as f:\n    # Die Datei 'f' verhält sich wie eine Liste von Zeilen\n    for zeile in f:\n        zeile_sauber = zeile.strip() # \\n (Umbruch) am Ende entfernen\n        \n        if \"Fehler\" in zeile_sauber:\n            print(f\"ALARMIERT: {zeile_sauber}\")",
+                                "checkpoint": " Das ist der Profi-Weg. Er verbraucht fast keinen Arbeitsspeicher, egal wie groß die Datei ist."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Die Analyse-Maschine",
+                                "goal": "Eine Statistik erstellen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "statistik = {\"Fehler\": 0, \"Warnung\": 0, \"Erfolg\": 0}\n\nwith open(\"test_log.txt\", \"r\", encoding=\"utf-8\") as f:\n    for zeile in f:\n        if \"Fehler\" in zeile:\n            statistik[\"Fehler\"] += 1\n        elif \"Warnung\" in zeile:\n            statistik[\"Warnung\"] += 1\n        elif \"Erfolg\" in zeile:\n            statistik[\"Erfolg\"] += 1\n\nprint(\"📊 LOG-ANALYSE:\")\nprint(statistik)",
+                                "checkpoint": " Wir kombinieren Datei-Iteration mit Dictionaries (Tag 8)."
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 5,
+                "weekId": 2,
+                "title": "Notiz-App (Dateien Schreiben)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Notiz-App (Dateien Schreiben)",
+                        "description": "Entwickle eine App, die sich Dinge merken kann, auch wenn du den Computer ausschaltest.",
+                        "goals": [
+                                "`w` vs `a`: Überschreiben vs Anhängen.",
+                                "JSON: Der Goldstandard für Daten-Speicherung.",
+                                "Persistenz: Daten überleben den Programm-Absturz.",
+                                "`os.path.exists`: Prüfen bevor man lädt."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Schreiber)",
+                                "goal": "Den Unterschied zwischen `w` (Write) und `a` (Append) verstehen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# DAS EXPERIMENT\n\n# 1. Wir schreiben etwas (w)\nwith open(\"tagebuch.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Tag 1: Ich habe Python gelernt.\\n\")\n\n# 2. Wir nutzen wieder 'w' (ACHTUNG!)\nwith open(\"tagebuch.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Tag 2: Alles ist weg!\\n\")\n\n# -- Datei prüfen --\nwith open(\"tagebuch.txt\", \"r\", encoding=\"utf-8\") as f:\n    print(f\"Inhalt nach 'w':\\n{f.read()}\")\n\n# 3. Wir nutzen 'a' (Append)\nwith open(\"tagebuch.txt\", \"a\", encoding=\"utf-8\") as f:\n    f.write(\"Tag 3: Das hier bleibt.\\n\")\n\n# -- Datei prüfen --\nwith open(\"tagebuch.txt\", \"r\", encoding=\"utf-8\") as f:\n    print(f\"Inhalt nach 'a':\\n{f.read()}\")",
+                                "checkpoint": " Nutze `w` nur, wenn du **neu anfangen** willst. Nutze `a` für Logs oder Listen."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Strukturierte Daten (JSON)",
+                                "goal": "Listen und Dictionaries speichern.",
+                                "why": "Du kannst eine Liste [\"Apfel\", \"Banane\"] nicht einfach mit f.write() speichern (das erwartet String).",
+                                "instruction": "",
+                                "code": "import json\n\ndaten = {\n    \"highscore\": 9999,\n    \"benutzer\": \"Mario\",\n    \"items\": [\"Pilz\", \"Blume\", \"Stern\"],\n    \"level_beendet\": True\n}\n\n# SPEICHERN (Dump)\nwith open(\"spielstand.json\", \"w\", encoding=\"utf-8\") as f:\n    json.dump(daten, f, indent=4) # indent=4 macht es schön lesbar\n\nprint(\"✅ Spielstand gespeichert!\")\n\n# LADEN (Load)\nwith open(\"spielstand.json\", \"r\", encoding=\"utf-8\") as f:\n    geladen = json.load(f)\n\nprint(f\"Geladener Highscore: {geladen['highscore']}\")\nprint(f\"Items: {geladen['items']}\")",
+                                "checkpoint": " json.dump() speichert, json.load() lädt. Es verwandelt Python-Objekte automatisch in Text und zurück!"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Die To-Do App (Projekt)",
+                                "goal": "Eine echte Anwendung bauen.",
+                                "why": "",
+                                "instruction": "Wir brauchen:\n1.  Eine laden() Funktion.\n2.  Eine speichern() Funktion.\n3.  Eine Schleife für User-Input.",
+                                "code": "import json\nimport os\n\nDATEI = \"todos.json\"\n\ndef lade_todos():\n    if not os.path.exists(DATEI):\n        return [] # Leere Liste wenn Datei fehlt\n    with open(DATEI, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\ndef speichere_todos(todos):\n    with open(DATEI, \"w\", encoding=\"utf-8\") as f:\n        json.dump(todos, f, indent=4)\n\n# Hauptprogramm\ntodos = lade_todos()\nprint(f\"📅 Willkommen! Du hast {len(todos)} Aufgaben.\")\n\nwhile True:\n    print(\"\\n1. Anzeigen | 2. Hinzufügen | 3. Löschen | 4. Ende\")\n    wahl = input(\"Auswahl: \")\n    \n    if wahl == \"1\":\n        for i, todo in enumerate(todos, 1):\n            status = \"[x]\" if todo['erledigt'] else \"[ ]\"\n            print(f\"{i}. {status} {todo['text']}\")\n            \n    elif wahl == \"2\":\n        text = input(\"Aufgabe: \")\n        todos.append({\"text\": text, \"erledigt\": False})\n        speichere_todos(todos) # Sofort speichern!\n        print(\"✅ Gespeichert.\")\n        \n    elif wahl == \"3\":\n        nummer = int(input(\"Nummer löschen: \"))\n        if 0 < nummer <= len(todos):\n            geloescht = todos.pop(nummer - 1)\n            speichere_todos(todos)\n            print(f\"🗑️ '{geloescht['text']}' gelöscht.\")\n            \n    elif wahl == \"4\":\n        print(\"👋 Bye!\")\n        break",
+                                "checkpoint": " Starte das Programm, füge etwas hinzu, beende es. Starte es NEU. Deine Daten sind noch da! Das ist **Persistenz**."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 6,
+                "weekId": 2,
+                "title": "Robuster Code (Error Handling)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Robuster Code (Error Handling)",
+                        "description": "Mache deine Programme unzerstörbar. Lerne, wie du Fehler abfängst, bevor sie zum Absturz führen.",
+                        "goals": [
+                                "try-except: Das Sicherheitsnetz für deinen Code.",
+                                "Spezifische Errors: Gezielte Hilfe für den User (ValueError, ZeroDivisionError).",
+                                "finally: Der Aufräum-Meister.",
+                                "raise: Selbst die Kontrolle über Fehler übernehmen.",
+                                "Stabilität: Programme schreiben, die niemals crashen."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Das Sicherheitsnetz)",
+                                "goal": "Verstehen, warum Programme abstürzen und wie man es verhindert.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# DAS EXPERIMENT: Was passiert beim Absturz?\n# zahl = int(input(\"Gib eine Zahl ein: \")) # Wenn ich \"hallo\" tippe -> CRASH!\n\n# DIE RETTUNG: try-except\ntry:\n    eingabe = input(\"Gib eine Zahl ein: \")\n    zahl = int(eingabe)\n    print(f\"Super! Deine Zahl ist {zahl}\")\nexcept ValueError:\n    # Das hier passiert NUR, wenn oben ein ValueError auftritt\n    print(\"❌ Ups! Das war keine Zahl. Bitte probier es nochmal.\")\n\nprint(\"Programm läuft sicher weiter...\")",
+                                "checkpoint": " Der Code im `try`-Block wird \"ausprobiert\". Wenn ein Fehler passiert, springt Python sofort in den `except`-Block."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Spezifische Fangnetze",
+                                "goal": "Verschiedene Fehler unterschiedlich behandeln.",
+                                "why": "Eine Division durch Null ist ein anderes Problem als eine fehlende Datei. Wir wollen genau wissen, was schiefgelaufen ist.",
+                                "instruction": "",
+                                "code": "def teile_zahlen():\n    try:\n        a = float(input(\"Zahl 1: \"))\n        b = float(input(\"Zahl 2: \"))\n        ergebnis = a / b\n        print(f\"Ergebnis: {ergebnis}\")\n    except ValueError:\n        print(\"❌ Bitte nur Zahlen eingeben!\")\n    except ZeroDivisionError:\n        print(\"❌ Du kannst nicht durch Null teilen!\")\n    except Exception as e:\n        # Der \"Joker\": Fängt alles andere ab\n        print(f\"❓ Unerwarteter Fehler: {e}\")\n\nteile_zahlen()",
+                                "checkpoint": " Man kann beliebig viele `except`-Blöcke untereinander schreiben. Python nimmt den ersten, der passt."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Aufräumen mit `finally`",
+                                "goal": "Sicherstellen, dass Code IMMER ausgeführt wird.",
+                                "why": "Wenn du eine Datei öffnest, musst du sie schließen – egal ob ein Fehler passiert ist oder nicht. `finally` ist die Aufräum-Kolonne.",
+                                "instruction": "",
+                                "code": "try:\n    f = open(\"geheim.txt\", \"w\")\n    f.write(\"Das ist ein Test.\")\n    # Stell dir vor, hier passiert ein Fehler...\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print(\"Fehler berechnet!\")\nfinally:\n    f.close()\n    print(\"🧹 Datei wurde sicher geschlossen.\")",
+                                "checkpoint": " Der `finally`-Block läuft **immer**, egal ob ein Fehler passiert ist, abgefangen wurde oder das Programm glatt lief."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Alarm schlagen (`raise`)",
+                                "goal": "Eigene Fehler auslösen.",
+                                "why": "Manchmal ist für Python alles okay, aber für deine App nicht (z.B. ein Alter von -5 Jahren). Dann kannst du selbst einen Fehler \"werfen\".",
+                                "instruction": "",
+                                "code": "def setze_alter(alter):\n    if alter < 0:\n        # Wir lösen manuell einen Fehler aus\n        raise ValueError(\"Alter kann nicht negativ sein!\")\n    print(f\"Alter gesetzt auf {alter}\")\n\ntry:\n    setze_alter(-10)\nexcept ValueError as e:\n    print(f\"🚫 Fehler im Programm: {e}\")",
+                                "checkpoint": " Mit `raise` signalisierst du: \"Stopp! Hier stimmt etwas logisch nicht.\""
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 7,
+                "weekId": 2,
+                "title": "Der Werkzeugkasten (Module & Imports)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Der Werkzeugkasten (Module & Imports)",
+                        "description": "Höre auf, alles selbst zu schreiben! Lerne, wie du fertige Bausteine nutzt und deinen Code in eigene \"Werkzeuge\" aufteilst.",
+                        "goals": [
+                                "Standard-Lib: Die riesige Schatzkiste von Python nutzen.",
+                                "from / import: Gezielter Zugriff auf Werkzeuge.",
+                                "Module bauen: Code modular und übersichtlich halten.",
+                                "Abstraktion: Funktionen in Dateien auslagern und wiederverwenden.",
+                                "Standard-Muster: Den professionellen Aufbau von Scripts (if __name__ == \"__main__\":)."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der LEGO-Baukasten)",
+                                "goal": "Verstehen, was Module sind.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# Die Werkzeugkiste öffnen (Standard Library)\nimport random\nimport math\nimport time\n\n# Ein fertiges Werkzeug nutzen\nprint(\"🎲 Würfeln...\", end=\"\", flush=True)\ntime.sleep(1) # Kurze Pause\nergebnis = random.randint(1, 6)\nprint(f\" {ergebnis}!\")\n\n# Mathematische Profi-Werkzeuge\nradius = 5\nflaeche = math.pi * radius**2\nprint(f\"⭕ Fläche des Kreises: {flaeche:.2f}\")",
+                                "checkpoint": " `import` lädt eine ganze Kiste voller Werkzeuge. Um ein Werkzeug zu nutzen, schreibst du `Kiste.Werkzeug`."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Gezielter Zugriff",
+                                "goal": "Nur das importieren, was man wirklich braucht.",
+                                "why": "Wenn du nur einen Hammer brauchst, schleppst du nicht den ganzen Werkstatt-Schrank mit. Das spart Tipparbeit und macht den Code sauberer.",
+                                "instruction": "",
+                                "code": "# Nur zwei Steine aus der Box holen\nfrom math import sqrt, ceil\n\n# Wir brauchen kein \"math.\" mehr davor!\nwurzel = sqrt(16)\naufgerundet = ceil(4.2)\n\nprint(f\"Wurzel: {wurzel}, Aufgerundet: {aufgerundet}\")\n\n# Profi-Tipp: Eigenen Namen geben (Alias)\nimport datetime as dt\njetzt = dt.datetime.now()\nprint(f\"📅 Datum: {jetzt}\")",
+                                "checkpoint": " `from Modul import Funktion` holt das Werkzeug direkt in deinen Code. Aber Vorsicht: Wenn du eine eigene Funktion mit dem gleichen Namen hast, gibt es Chaos!"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Die eigene Werkstatt (Eigene Module)",
+                                "goal": "Code über mehrere Dateien verteilen.",
+                                "why": "Wenn dein Programm 1000 Zeilen lang wird, verlierst du den Überblick. Du lagerst Funktionen in eigene Dateien aus.",
+                                "instruction": "1. Erstelle eine Datei `mein_werkzeug.py`.\n2. Erstelle eine zweite Datei `hauptprogramm.py`.",
+                                "code": "def sag_hallo(name):\n    return f\"Moin {name}! Wie läuft das Programmieren?\"\n\ndef quadrat(zahl):\n    return zahl * zahl\nimport mein_werkzeug\n\nprint(mein_werkzeug.sag_hallo(\"Coder\"))\nprint(f\"Das Quadrat von 8 ist {mein_werkzeug.quadrat(8)}\")",
+                                "checkpoint": " Jede `.py` Datei in deinem Ordner ist automatisch ein Modul, das du importieren kannst."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Das Geheimnis von `__main__`",
+                                "goal": "Verhindern, dass Module von selbst losrollen.",
+                                "why": "Wenn du ein Modul importierst, führt Python den Code darin aus. Wenn du dort Test-Prints hast, erscheinen die plötzlich in deinem Hauptprogramm. Das wollen wir verhindern.",
+                                "instruction": "",
+                                "code": "def addiere(a, b):\n    return a + b\n\n# Dieser Block wird NUR ausgeführt, wenn du rechner.py DIREKT startest,\n# aber NICHT, wenn du es importierst!\nif __name__ == \"__main__\":\n    print(\"--- Selbsttest des Rechners ---\")\n    print(f\"Test: 2 + 2 = {addiere(2, 2)}\")",
+                                "checkpoint": " Nutze diesen \"Zauber-Satz\" immer, wenn du Test-Code in deinen Modulen behalten willst."
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+      ]
+    },
+    {
+      id: 3,
+      title: "Woche 3: OOP & Module",
+      subtitle: "Objektorientierte Programmierung",
+      description: "Lerne Classes, Vererbung und wie man eigene Module erstellt.",
+      color: "yellow",
+      days: [
+        {
+                "id": 1,
+                "weekId": 3,
+                "title": "Dein erster Bauplan (Klassen Basics)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Dein erster Bauplan (Klassen Basics)",
+                        "description": "Höre auf, nur Funktionen zu schreiben. Lerne, wie du eigene \"Dinge\" (Objekte) erschaffst, die Daten und Aktionen kombinieren.",
+                        "goals": [
+                                "class: Der Bauplan für neue Dinge.",
+                                "__init__: Wo alles beginnt (Konstruktor).",
+                                "self: Der Fingerzeig auf das eigene Objekt.",
+                                "Atrribute: Die Daten, die ein Objekt speichert.",
+                                "Methoden: Die Aktionen, die ein Objekt ausführen kann."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Keks-Ausstecher)",
+                                "goal": "Den Unterschied zwischen Klasse und Objekt verstehen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# DER BAUPLAN (Klasse)\nclass Bankkonto:\n    # Die Geburtsstunde eines Objekts\n    def __init__(self, besitzer, kontostand=0):\n        self.besitzer = besitzer      # Daten speichern\n        self.kontostand = kontostand  # Daten speichern\n        print(f\"✅ Konto für {besitzer} wurde eröffnet.\")\n\n# DAS PRODUKT (Objekt)\nkonto_mario = Bankkonto(\"Mario\", 100)\nkonto_luigi = Bankkonto(\"Luigi\", 50)\n\nprint(f\"{konto_mario.besitzer} hat {konto_mario.kontostand} €\")",
+                                "checkpoint": " `__init__` ist die Funktion, die Python automatisch aufruft, wenn du ein neues Objekt erstellst."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Das Geheimnis von `self`",
+                                "goal": "Verstehen, warum `self` überall steht.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "class Hund:\n    def __init__(self, name):\n        self.name = name # \"Mein Name ist...\"\n\n    def bellen(self):\n        print(f\"{self.name} sagt: Wuff! Wuff!\")\n\nmein_hund = Hund(\"Bello\")\nmein_hund.bellen() # Python macht daraus intern: bellen(mein_hund)",
+                                "checkpoint": " Jede Funktion (Methode) innerhalb einer Klasse muss `self` als ersten Parameter haben."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Aktionen ausführen (Methoden)",
+                                "goal": "Funktionen in Klassen einbauen.",
+                                "why": "Ein Objekt ohne Aktionen ist nur eine Daten-Sammlung. Erst Methoden machen es lebendig.",
+                                "instruction": "",
+                                "code": "class Bankkonto:\n    def __init__(self, besitzer, kontostand=0):\n        self.besitzer = besitzer\n        self.kontostand = kontostand\n\n    def einzahlen(self, betrag):\n        self.kontostand += betrag\n        print(f\"💰 {betrag} € eingezahlt. Neuer Stand: {self.kontostand} €\")\n\n    def abheben(self, betrag):\n        if betrag <= self.kontostand:\n            self.kontostand -= betrag\n            print(f\"💸 {betrag} € ausgezahlt.\")\n        else:\n            print(\"❌ Nicht genug Guthaben!\")\n\n# Testen\nmein_konto = Bankkonto(\"Ich\", 500)\nmein_konto.einzahlen(200)\nmein_konto.abheben(1000) # Fehlermeldung",
+                                "checkpoint": " Methoden greifen über `self.variable` auf die Daten des Objekts zu."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 2,
+                "weekId": 3,
+                "title": "Das Level-Up (Vererbung & RPG System)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Das Level-Up (Vererbung & RPG System)",
+                        "description": "Verschwende keine Zeit mit doppeltem Code. Lerne, wie Klassen von anderen Klassen \"erben\" und sich spezialisieren.",
+                        "goals": [
+                                "Vererbung: Code-Recycling auf Profi-Niveau.",
+                                "super(): Den Eltern-Code clever erweitern.",
+                                "Overriding: Methoden der Eltern im Kind neu definieren.",
+                                "Klassen-Variablen: Ein gemeinsames Gedächtnis für alle Instanzen.",
+                                "System-Design: Komplexe Hierarchien einfach strukturieren."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Die Evolution)",
+                                "goal": "Verstehen, wie man Code-Wiederholung vermeidet.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# DIE ELTERN-KLASSE\nclass Charakter:\n    def __init__(self, name, leben):\n        self.name = name\n        self.leben = leben\n\n    def bewegen(self):\n        print(f\"🏃 {self.name} läuft einen Schritt vorwärts.\")\n\n# DIE KIND-KLASSE (erbt von Charakter)\nclass Krieger(Charakter):\n    def schlag(self):\n        print(f\"⚔️ {self.name} schwingt das Schwert!\")\n\n# DIE ANDERE KIND-KLASSE\nclass Magier(Charakter):\n    def zauber(self):\n        print(f\"✨ {self.name} wirft einen Feuerball!\")\n\n# Testen\nheld1 = Krieger(\"Arthur\", 100)\nheld1.bewegen() # Kommt von Charakter\nheld1.schlag()  # Eigene Methode",
+                                "checkpoint": " `class Kind(Eltern):` bedeutet, dass das Kind alles bekommt, was die Eltern haben."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Die Spezial-Kraft (`super()`)",
+                                "goal": "Die Eltern-Methoden erweitern statt sie komplett zu ersetzen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "class Magier(Charakter):\n    def __init__(self, name, leben, mana):\n        # Rufe den Konstruktor der Eltern auf\n        super().__init__(name, leben)\n        self.mana = mana\n        print(f\"🧙 Magier {name} mit {mana} Mana erschaffen.\")\n\n    def zauber(self):\n        if self.mana >= 10:\n            self.mana -= 10\n            print(f\"🔥 Feuerball! (Mana übrig: {self.mana})\")\n        else:\n            print(\"❌ Zu wenig Mana!\")\n\nmario = Magier(\"Merlin\", 80, 50)\nmario.zauber()",
+                                "checkpoint": " `super()` greift auf die Eltern-Klasse zu. So nutzen wir bewährten Code einfach weiter."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Das Team-Register (Klassen-Variablen)",
+                                "goal": "Daten speichern, die für ALLE Objekte der Klasse gelten.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "class Held:\n    helden_anzahl = 0 # Diese Zahl gehört der KLASSE\n\n    def __init__(self, name):\n        self.name = name\n        # Wir erhöhen die Zahl bei JEDEM neuen Objekt\n        Held.helden_anzahl += 1\n        print(f\"🛡️ Ein neuer Held erscheint: {name}\")\n\nh1 = Held(\"A\")\nh2 = Held(\"B\")\nh3 = Held(\"C\")\n\nprint(f\"Gesamtanzahl Helden: {Held.helden_anzahl}\")",
+                                "checkpoint": " Klassen-Variablen werden ohne `self` am Anfang der Klasse definiert. Sie sind wie ein gemeinsames Gedächtnis aller Objekte."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 3,
+                "weekId": 3,
+                "title": "Die Library der Natur (Abstrakte Klassen)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Die Library der Natur (Abstrakte Klassen)",
+                        "description": "Lerne, wie du feste Regeln für deine Klassen festlegst und wie ein Objekt mehrere \"Spezial-Fähigkeiten\" (Mixins) gleichzeitig haben kann.",
+                        "goals": [
+                                "ABC: Abstrakte Klassen als Bauplan-Vorgabe.",
+                                "@abstractmethod: Zwingt Unterklassen zum Handeln.",
+                                "Mixins: Modulare Fähigkeiten für Klassen.",
+                                "isinstance: Den Überblick im Stammbaum behalten.",
+                                "Software-Architektur: Saubere Trennung von Konzept und Umsetzung."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Die abstrakte Idee)",
+                                "goal": "Verstehen, was eine \"Abstract Base Class\" (ABC) ist.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "from abc import ABC, abstractmethod\n\nclass Tier(ABC):\n    @abstractmethod\n    def laut_geben(self):\n        # Wir schreiben hier keinen Code!\n        # Jedes Kind MUSS diese Methode selbst bauen.\n        pass\n\n# FEHLER: einTier = Tier() # Python sagt: Stop! Tier ist abstrakt.\n\nclass Hund(Tier):\n    def laut_geben(self):\n        print(\"Wuff!\")\n\nbello = Hund()\nbello.laut_geben()",
+                                "checkpoint": " `@abstractmethod` ist wie ein Vertrag: \"Wenn du ein Tier sein willst, MUSST du bellen, miauen oder piepsen können.\""
+                        },
+                        {
+                                "number": 2,
+                                "title": "Spezial-Fähigkeiten (Mixins)",
+                                "goal": "Einer Klasse mehrere Talente beibringen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "class Schwimmer:\n    def schwimmen(self):\n        print(f\"{self.name} schwimmt durch das Wasser.\")\n\nclass Flieger:\n    def fliegen(self):\n        print(f\"{self.name} hebt ab in die Lüfte!\")\n\nclass Ente(Tier, Schwimmer, Flieger):\n    def __init__(self, name):\n        self.name = name\n    \n    def laut_geben(self):\n        print(\"Quak!\")\n\ndonald = Ente(\"Donald\")\ndonald.schwimmen()\ndonald.fliegen()",
+                                "checkpoint": " Klassen können in Python von beliebig vielen anderen Klassen erben. Das nennt man Mehrfachvererbung."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Wer bist du eigentlich? (`isinstance`)",
+                                "goal": "Den Stammbaum eines Objekts prüfen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "def check_talent(obj):\n    print(f\"Check für {type(obj).__name__}:\")\n    if isinstance(obj, Flieger):\n        print(\"✅ Kann fliegen!\")\n    if isinstance(obj, Schwimmer):\n        print(\"✅ Kann schwimmen!\")\n    if isinstance(obj, Tier):\n        print(\"✅ Ist ein Tier!\")\n\ncheck_talent(donald)",
+                                "checkpoint": " `isinstance(obj, Klasse)` gibt `True` zurück, wenn das Objekt von dieser Klasse (oder einer Unterklasse) abstammt."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 4,
+                "weekId": 3,
+                "title": "Der digitale Hausmeister (OS-Modul)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Der digitale Hausmeister (OS-Modul)",
+                        "description": "Schreibe ein Skript, das deinen Computer aufräumt. Lerne, wie du mit Python Ordner erstellst, Dateien suchst und sie verschiebst.",
+                        "goals": [
+                                "os.getcwd: Den Standort bestimmen.",
+                                "os.path.join: Plattform-unabhängiges Programmieren.",
+                                "os.mkdir / os.rename: Das Dateisystem gestalten.",
+                                "Automatisierung: Zeit sparen durch kluge Skripte."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Hausmeister)",
+                                "goal": "Verstehen, wie Python auf das Dateisystem zugreift.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import os\n\n# Wo bin ich gerade?\nhier = os.getcwd()\nprint(f\"📍 Ich befinde mich in: {hier}\")\n\n# Was liegt hier alles rum?\ninhalt = os.listdir()\nprint(f\"📂 Hier liegen {len(inhalt)} Dateien/Ordner.\")\n\n# Nur die ersten 5 anzeigen\nfor item in inhalt[:5]:\n    print(f\"  - {item}\")",
+                                "checkpoint": " `getcwd` = \"Get Current Working Directory\" (Aktueller Standort). `listdir` = \"List Directory\" (Inhalt anzeigen)."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Der sichere Pfadbau",
+                                "goal": "Pfade bauen, die auf Windows, Mac und Linux funktionieren.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "ordner = \"Downloads\"\ndatei = \"foto.jpg\"\n\n# SCHLECHT (funktioniert nur auf Windows):\n# pfad = ordner + \"\\\\\" + datei\n\n# PROFI-WEG (funktioniert überall):\npfad = os.path.join(ordner, datei)\nprint(f\"🔗 Sicherer Pfad: {pfad}\")\n\n# Check: Existiert das eigentlich?\nif os.path.exists(pfad):\n    print(\"✅ Datei gefunden!\")\nelse:\n    print(\"❌ Pfad existiert nicht.\")",
+                                "checkpoint": " Nutze **immer** `os.path.join`, um Pfade zu kombinieren. Es erkennt automatisch dein Betriebssystem."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Aufräum-Aktionen",
+                                "goal": "Ordner erstellen und Dateien umbenennen.",
+                                "why": "Automatisierung ist die Superkraft von Python. Warum 100 Dateien von Hand sortieren, wenn ein Skript das in einer Sekunde macht?",
+                                "instruction": "",
+                                "code": "base = \"Aufräum_Test\"\n\n# 1. Ordner bauen\nif not os.path.exists(base):\n    os.mkdir(base)\n    print(f\"📁 Ordner '{base}' erstellt.\")\n\n# 2. Eine Testdatei hineinlegen (Tag 12 Wissen!)\ndatei_pfad = os.path.join(base, \"müll.txt\")\nwith open(datei_pfad, \"w\") as f:\n    f.write(\"Ich bin eine unwichtige Datei.\")\n\n# 3. Umbenennen\nneuer_pfad = os.path.join(base, \"wichtig.txt\")\nos.rename(datei_pfad, neuer_pfad)\nprint(\"📝 Datei umbenannt!\")",
+                                "checkpoint": " `os.mkdir` = Make Directory. `os.rename(alt, neu)` verschiebt oder benennt Dateien um."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Projekt - Der Dateisortierer",
+                                "goal": "Ein echtes nützliches Tool bauen.",
+                                "why": "",
+                                "instruction": "Wir suchen alle `.txt` Dateien und verschieben sie in einen \"Dokumente\" Ordner.",
+                                "code": "import os\n\ndef sortiere_ordner(ziel_ordner):\n    # Ziel-Ordner erstellen\n    doku_pfad = os.path.join(ziel_ordner, \"Dokumente\")\n    if not os.path.exists(doku_pfad):\n        os.mkdir(doku_pfad)\n\n    # Alle Dateien durchgehen\n    for dateiname in os.listdir(ziel_ordner):\n        # Nur Dateien, keine Ordner\n        voller_pfad = os.path.join(ziel_ordner, dateiname)\n        if os.path.isfile(voller_pfad) and dateiname.endswith(\".txt\"):\n            ziel = os.path.join(doku_pfad, dateiname)\n            os.rename(voller_pfad, ziel)\n            print(f\"🚚 Verschiebe {dateiname} -> Dokumente/\")\n\n# Testlauf im aktuellen Ordner (VORSICHT!)\n# sortiere_ordner(\".\") ",
+                                "checkpoint": " Kombiniere `os.listdir` mit `endswith` und `os.rename`, um Dateien massenhaft zu sortieren."
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 5,
+                "weekId": 3,
+                "title": "Pfade mit Superkräften (Pathlib)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Pfade mit Superkräften (Pathlib)",
+                        "description": "Vergiss komplizierte String-Basteleien. Nutze `pathlib`, um Pfade wie echte Objekte zu behandeln – sauberer, schneller und moderner.",
+                        "goals": [
+                                "Path-Objekte: Pfade sind keine einfachen Strings mehr.",
+                                "read_text / write_text: Blitzschneller Dateizugriff.",
+                                "rglob: Intelligente Dateisuche mit Wildcards (`*`).",
+                                "Metadaten: Einfacher Zugriff auf Endungen, Namen und Ordner.",
+                                "Sauberer Code: Warum `pathlib` das alte `os.path` ablöst."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Das Objekt-GPS)",
+                                "goal": "Verstehen, warum `Path` besser ist als ein einfacher String.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "from pathlib import Path\n\n# Wir erstellen ein Path-Objekt\npfad = Path(\"mein_projekt/notizen.txt\")\n\nprint(f\"📄 Dateiname: {pfad.name}\")\nprint(f\"🏠 Ordner: {pfad.parent}\")\nprint(f\"🏷️ Endung: {pfad.suffix}\")\nprint(f\"🆔 Name ohne Endung: {pfad.stem}\")\n\n# Check ohne os.path!\nif pfad.exists():\n    print(\"✅ Gefunden!\")\nelse:\n    print(\"❌ Nicht da.\")",
+                                "checkpoint": " `Path` macht aus einem Text ein Werkzeug. Du musst keine Schrägstriche mehr zählen."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Der moderne Datei-Zugriff",
+                                "goal": "Dateien lesen und schreiben ohne `with open`.",
+                                "why": "Für einfache Textdateien ist der `with open`-Block oft viel zu viel Code. `pathlib` bietet eine Abkürzung.",
+                                "instruction": "",
+                                "code": "p = Path(\"hallo.txt\")\n\n# Schnell SCHREIBEN (Überschreibt alles)\np.write_text(\"Python mit Pathlib ist super!\", encoding=\"utf-8\")\n\n# Schnell LESEN\ninhalt = p.read_text(encoding=\"utf-8\")\nprint(f\"Inhalt der Datei: {inhalt}\")",
+                                "checkpoint": " `write_text` und `read_text` erledigen das Öffnen und Schließen der Datei automatisch im Hintergrund. Perfekt für kleine Dateien!"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Den Computer scannen",
+                                "goal": "Alle Dateien eines Typs finden.",
+                                "why": "Stell dir vor, du suchst alle Python-Dateien in einem riesigen Ordner. Mit `pathlib` geht das in einer Zeile.",
+                                "instruction": "",
+                                "code": "aktueller_ordner = Path(\".\")\n\nprint(\"🐍 Deine Python-Scripts:\")\n# rglob = rekursive Suche (auch in Unterordnern)\nfor datei in aktueller_ordner.rglob(\"*.py\"):\n    print(f\" gefunden: {datei.name}\")",
+                                "checkpoint": " `rglob(\"*.py\")` ist wie eine Suchfunktion: \"Suche überall nach Dateien, die auf .py enden.\""
+                        },
+                        {
+                                "number": 4,
+                                "title": "Projekt - Extension-Scanner",
+                                "goal": "Statistiken über deine Dateien erstellen.",
+                                "why": "",
+                                "instruction": "Wir zählen, wie viele Dateien von jedem Typ (`.py`, `.txt`, `.jpg` etc.) wir im Ordner haben.",
+                                "code": "from pathlib import Path\nfrom collections import Counter\n\ndef scan_extensions(ordner_name):\n    ordner = Path(ordner_name)\n    # Alle Endungen einsammeln\n    endungen = [f.suffix for f in ordner.iterdir() if f.is_file()]\n    \n    # Zählen\n    statistik = Counter(endungen)\n    \n    print(f\"📊 Datei-Statistik für '{ordner_name}':\")\n    for ext, anzahl in statistik.items():\n        label = ext if ext else \"(Keine Endung)\"\n        print(f\"  {label:10} : {anzahl} Dateien\")\n\nscan_extensions(\".\")",
+                                "checkpoint": " Nutze `iterdir()`, um durch einen Ordner zu gehen. `f.is_file()` prüft, ob es eine echte Datei ist (kein Ordner)."
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 6,
+                "weekId": 3,
+                "title": "Der Schwerlast-Transporter (Shutil)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Der Schwerlast-Transporter (Shutil)",
+                        "description": "Lerne, wie du ganze Ordner kopierst, löschst und in ZIP-Archive verpackst. Baue dein eigenes automatisches Backup-System.",
+                        "goals": [
+                                "shutil.copy2: Kopieren wie ein Profi (mit Zeitstempeln).",
+                                "shutil.copytree: Ganze Verzeichnisse klonen.",
+                                "shutil.make_archive: Die Welt in ZIPs packen.",
+                                "shutil.rmtree: Effektives (aber gefährliches) Löschen.",
+                                "Automatisches Backup: Datenverlust verhindern."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Packer)",
+                                "goal": "Verstehen, warum wir `shutil` zusätzlich zu `os` brauchen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import shutil\nfrom pathlib import Path\n\n# 1. Eine Datei kopieren (Behält Metadaten wie Uhrzeit)\n# shutil.copy2(\"quelle.txt\", \"ziel.txt\")\n\n# 2. Einen GANZEN ORDNER kopieren (Inklusive Inhalt!)\ntry:\n    shutil.copytree(\"mein_projekt\", \"mein_projekt_backup\")\n    print(\"✅ Ganzer Ordner wurde kopiert!\")\nexcept FileExistsError:\n    print(\"❌ Backup existiert bereits.\")",
+                                "checkpoint": " `copytree` kopiert alles: Dateien, Unterordner, Unter-Unterordner. Ein Befehl für alles."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Die ZIP-Maschine",
+                                "goal": "Platz sparen durch Archivierung.",
+                                "why": "Backups verbrauchen viel Platz. Es ist klüger, alles in eine einzige, komprimierte ZIP-Datei zu packen.",
+                                "instruction": "",
+                                "code": "import shutil\n\n# Syntax: make_archive(Name_der_ZIP, Format, Welcher_Ordner)\nshutil.make_archive(\"Projekt_Backup_2024\", \"zip\", \"mein_projekt\")\n\nprint(\"📦 Projekt wurde erfolgreich gezippt!\")",
+                                "checkpoint": " `make_archive` verwandelt einen ganzen Ordner in eine einzige Datei. Das ist perfekt zum Verschicken oder Aufbewahren."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Achtung, Abrissbirne! (`rmtree`)",
+                                "goal": "Ordner unwiderruflich löschen.",
+                                "why": "`os.remove()` kann nur leere Ordner löschen. Wenn du einen Ordner mit Inhalt löschen willst, brauchst du `shutil.rmtree`. **VORSICHT:** Die Dateien landen NICHT im Papierkorb. Sie sind weg.",
+                                "instruction": "",
+                                "code": "import shutil\nimport os\n\nfolder = \"test_muell\"\n\nif os.path.exists(folder):\n    # LÖSCHT ALLES IM ORDNER - Ohne Rückfrage!\n    # shutil.rmtree(folder) \n    print(f\"💣 {folder} wurde rücksichtslos gelöscht.\")",
+                                "checkpoint": " Nutze `rmtree` (\"Remove Tree\") mit Bedacht. Ein Tippfehler im Pfad kann katastrophal sein."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Projekt - Das Auto-Backup Tool",
+                                "goal": "Ein Skript, das täglich deine Arbeit sichert.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import shutil\nfrom datetime import datetime\nfrom pathlib import Path\n\ndef erstelle_backup(quell_ordner, backup_ziel):\n    # 1. Zeitstempel erstellen\n    zeit = datetime.now().strftime(\"%Y-%m-%d_%H-%M\")\n    name = f\"Backup_{zeit}\"\n    \n    # 2. Pfad bauen\n    ziel_pfad = Path(backup_ziel) / name\n    \n    # 3. Zippen\n    print(f\"🚀 Starte Backup von {quell_ordner}...\")\n    shutil.make_archive(str(ziel_pfad), \"zip\", quell_ordner)\n    print(f\"✨ Fertig! Archiv gespeichert: {name}.zip\")\n\n# Beispiel Aufruf:\n# erstelle_backup(\"meine_skripte\", \"backups\")",
+                                "checkpoint": " Durch die Kombination mit `datetime` bekommt jedes Backup einen eigenen Namen. So überschreibst du nichts Altes."
+                        },
+                        {
+                                "number": 5,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 7,
+                "weekId": 3,
+                "title": "Das magische Lasso (Glob & Batch-Rename)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Das magische Lasso (Glob & Batch-Rename)",
+                        "description": "Sammle hunderte Dateien gleichzeitig ein und benenne sie in Sekunden um. Nutze \"Wildcards\", um genau die Dateien zu finden, die du suchst.",
+                        "goals": [
+                                "Glob-Patterns: Suchen mit `*`, `?` und `[]`.",
+                                "Wildcards: Die Macht der Mustererkennung.",
+                                "Batch-Processing: Hunderte Aufgaben in einer Schleife erledigen.",
+                                "F-Strings: Fortgeschrittene Formatierung (führende Nullen).",
+                                "Wochen-Finale: Du kannst jetzt das Dateisystem deines Computers komplett mit Python steuern!"
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Das magische Lasso)",
+                                "goal": "Muster nutzen, um Dateigruppen zu finden.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "from pathlib import Path\n\n# Wir erzeugen ein Path-Objekt für den aktuellen Ordner\nordner = Path(\".\")\n\n# Das magische Lasso werfen: Alle Python-Dateien\npython_dateien = list(ordner.glob(\"*.py\"))\n\nprint(f\"🐍 Ich habe {len(python_dateien)} Python-Scripts gefunden.\")\n\n# Nur die anzeigen, die mit 'T' anfangen\nfor datei in ordner.glob(\"T*.*\"):\n    print(f\" Found: {datei.name}\")",
+                                "checkpoint": " `*` ersetzt beliebig viele Zeichen. `T*` findet \"Test\", \"Tagebuch\", \"Tabelle\"."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Präzisions-Suche (`?` und `[]`)",
+                                "goal": "Noch genauer filtern.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# Sucht nach: Bild01, Bild02, BildAA... (Muss genau 2 Zeichen am Ende haben)\nfor datei in ordner.glob(\"Bild??.*\"):\n    print(f\"Gefunden: {datei.name}\")\n\n# Sucht nach: Log_A.txt, Log_B.txt, Log_C.txt (Nichts anderes!)\nfor datei in ordner.glob(\"Log_[ABC].txt\"):\n    print(f\"Wichtiger Log: {datei.name}\")",
+                                "checkpoint": " `?` = genau ein Zeichen. `[ABC]` = Einer dieser drei Buchstaben."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Das große Umbenennen (Batch-Rename)",
+                                "goal": "Viele Dateien gleichzeitig bearbeiten.",
+                                "why": "Du hast 100 Fotos vom Handy (`IMG_202401.jpg`) und willst sie `Urlaub_01.jpg` etc. nennen. Python macht das für dich.",
+                                "instruction": "",
+                                "code": "from pathlib import Path\n\ndef batch_rename(ordner_name, prefix):\n    ordner = Path(ordner_name)\n    # Alle .jpg Dateien finden\n    dateien = list(ordner.glob(\"*.jpg\"))\n    \n    # Sortieren, damit die Reihenfolge stimmt\n    dateien.sort()\n    \n    for i, datei in enumerate(dateien, 1):\n        neuer_name = f\"{prefix}_{i:02d}{datei.suffix}\" # :02d macht 01 statt 1\n        neuer_pfad = datei.parent / neuer_name\n        \n        # Umbenennen\n        # datei.rename(neuer_pfad) \n        print(f\"✏️  Wäre umbenannt: {datei.name} -> {neuer_name}\")\n\n# Beispiel:\n# batch_rename(\"Fotos\", \"Urlaub\")",
+                                "checkpoint": " Nutze `enumerate(liste, 1)`, um bequem hochzuzählen. Das `:02d` sorgt für führende Nullen bei Nummern (01, 02...)."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+      ]
+    },
+    {
+      id: 4,
+      title: "Woche 4: Real-World Apps",
+      subtitle: "Praktische Anwendungen",
+      description: "APIs, Web Scraping, Datenbanken und vollständige Projekte.",
+      color: "green",
+      days: [
+        {
+                "id": 1,
+                "weekId": 4,
+                "title": "Der Universal-Übersetzer (JSON)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Der Universal-Übersetzer (JSON)",
+                        "description": "Lerne JSON kennen – die Sprache, in der das Internet spricht. Schreibe einen Manager, der die Einstellungen deiner Apps speichert.",
+                        "goals": [
+                                "dumps / loads: Datenaustausch über Text-Strings.",
+                                "dump / load: Datenspeicherung in Dateien.",
+                                "Standard-Datentypen: In JSON werden Python-Listen zu Arrays und `None` zu `null`.",
+                                "indent: JSON für Menschen lesbar machen.",
+                                "Kapselung: JSON-Logik in Klassen verstecken."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Übersetzer)",
+                                "goal": "Verstehen, warum JSON für Datenaustausch wichtig ist.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import json\n\ndaten = {\n    \"benutzer\": \"Coder123\",\n    \"level\": 5,\n    \"online\": True,\n    \"freunde\": [\"Anna\", \"Ben\"]\n}\n\n# 1. Dict -> JSON Text (Senden)\njson_text = json.dumps(daten, indent=4)\nprint(f\"📡 Als JSON-Text:\\n{json_text}\")\n\n# 2. JSON Text -> Dict (Empfangen)\nneue_daten = json.loads(json_text)\nprint(f\"📥 Zurück als Python Dict: {neue_daten['benutzer']}\")",
+                                "checkpoint": " `dumps` (dump string) macht Text aus Daten. `loads` (load string) macht Daten aus Text."
+                        },
+                        {
+                                "number": 2,
+                                "title": "In Dateien speichern (`dump` & `load`)",
+                                "goal": "JSON dauerhaft auf der Festplatte sichern.",
+                                "why": "Strings sind flüchtig. Dateien sind für die Ewigkeit. Für Dateien lassen wir das \"s\" am Ende weg.",
+                                "instruction": "",
+                                "code": "import json\n\neinstellungen = {\"theme\": \"dark\", \"vol\": 80}\n\n# In Datei SCHREIBEN\nwith open(\"config.json\", \"w\") as f:\n    json.dump(einstellungen, f)\n\n# Aus Datei LESEN\nwith open(\"config.json\", \"r\") as f:\n    geladen = json.load(f)\n\nprint(f\"Die Lautstärke ist: {geladen['vol']}%\")",
+                                "checkpoint": " Ohne \"s\" am Ende (`dump`/`load`) arbeitest du direkt mit Datei-Objekten."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Der Konfigurations-Manager (Klasse)",
+                                "goal": "Eine saubere Zentrale für App-Einstellungen bauen.",
+                                "why": "In einer echten App willst du nicht überall `open()` und `json.load()` schreiben. Eine Klasse erledigt das für dich.",
+                                "instruction": "",
+                                "code": "class Settings:\n    def __init__(self, datei=\"app_settings.json\"):\n        self.datei = datei\n        self.daten = self.laden()\n\n    def laden(self):\n        try:\n            with open(self.datei, \"r\") as f:\n                return json.load(f)\n        except FileNotFoundError:\n            return {\"user\": \"Gast\", \"lang\": \"de\"} # Standardwerte\n\n    def speichern(self):\n        with open(self.datei, \"w\") as f:\n            json.dump(self.daten, f, indent=4)\n\n# Nutzung\ns = Settings()\nprint(f\"Hallo {s.daten['user']}\")\ns.daten['user'] = \"Pro_Coder\"\ns.speichern() # Jetzt ist es in der Datei gespeichert!",
+                                "checkpoint": " Eine Klasse kapselt die JSON-Logik. Dein restlicher Code muss nur noch `s.daten` ändern."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 2,
+                "weekId": 4,
+                "title": "Die Tabellen-Kraft (CSV)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Die Tabellen-Kraft (CSV)",
+                        "description": "Lerne, wie du Daten speicherst, die du in Excel oder Google Sheets öffnen kannst. Baue einen Tracker für deine täglichen Ausgaben.",
+                        "goals": [
+                                "CSV Format: Rohdaten in Zeilen und Spalten.",
+                                "csv.reader/writer: Der direkte Weg für Listen.",
+                                "DictReader/DictWriter: Der saubere Weg mit Spaltennamen.",
+                                "Append-Modus: Daten hinzufügen, ohne Altes zu löschen.",
+                                "Datentypen: Achtung! CSV liest alles als String – Zahlen musst du umwandeln."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Das linierte Blatt)",
+                                "goal": "Verstehen, wie CSV-Tabellen funktionieren.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import csv\n\ndaten = [\n    [\"Name\", \"Beruf\", \"Gehalt\"],\n    [\"Anna\", \"Entwicklerin\", 5000],\n    [\"Ben\", \"Designer\", 4500]\n]\n\n# 1. SCHREIBEN\nwith open(\"gehalt.csv\", \"w\", newline=\"\", encoding=\"utf-8\") as f:\n    writer = csv.writer(f)\n    writer.writerows(daten)\n\n# 2. LESEN\nwith open(\"gehalt.csv\", \"r\", encoding=\"utf-8\") as f:\n    reader = csv.reader(f)\n    for zeile in reader:\n        print(f\"Spalte 1: {zeile[0]}, Spalte 2: {zeile[1]}\")",
+                                "checkpoint": " `newline=\"\"` ist wichtig, damit unter Windows keine doppelten Leerzeilen entstehen."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Der Profi-Modus (DictReader)",
+                                "goal": "Spalten mit Namen ansprechen statt mit Nummern.",
+                                "why": "In einer Tabelle mit 20 Spalten verlierst du mit `zeile[14]` den Überblick. `DictReader` macht aus jeder Zeile ein Dictionary.",
+                                "instruction": "",
+                                "code": "import csv\n\nwith open(\"gehalt.csv\", \"r\", encoding=\"utf-8\") as f:\n    # Nutzt die erste Zeile automatisch als \"Keys\"\n    reader = csv.DictReader(f)\n    for zeile in reader:\n        print(f\"{zeile['Name']} verdient {zeile['Gehalt']} €.\")",
+                                "checkpoint": " Mit `DictReader` sagst du einfach `zeile['Name']`. Das ist viel sicherer und lesbarer!"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Der Ausgaben-Tracker (Projekt)",
+                                "goal": "Daten an eine bestehende CSV-Datei anhängen.",
+                                "why": "Wir wollen unsere Ausgaben nacheinander eintragen, ohne die alten zu löschen.",
+                                "instruction": "",
+                                "code": "import csv\nfrom datetime import datetime\n\ndef log_ausgabe(kategorie, betrag):\n    datum = datetime.now().strftime(\"%Y-%m-%d\")\n    \n    # \"a\" für Append (Anhängen)\n    with open(\"ausgaben.csv\", \"a\", newline=\"\", encoding=\"utf-8\") as f:\n        spalten = [\"Datum\", \"Kategorie\", \"Betrag\"]\n        writer = csv.DictWriter(f, fieldnames=spalten)\n        \n        # Falls Datei leer, Header schreiben\n        if f.tell() == 0:\n            writer.writeheader()\n            \n        writer.writerow({\"Datum\": datum, \"Kategorie\": kategorie, \"Betrag\": betrag})\n    print(f\"✅ {betrag} € für {kategorie} gespeichert.\")\n\n# Test\nlog_ausgabe(\"Essen\", 12.50)\nlog_ausgabe(\"Kino\", 15.00)",
+                                "checkpoint": " `f.tell() == 0` prüft, ob die Datei ganz am Anfang steht (also neu/leer ist), um nur einmal den Header zu schreiben."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 3,
+                "weekId": 4,
+                "title": "Die Zeitmaschine (Datetime)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Die Zeitmaschine (Datetime)",
+                        "description": "Lerne, wie Python mit Zeit und Datum umgeht. Baue einen Countdown, der dir sagt, wie viele Tage es noch bis zu deinem nächsten Geburtstag sind.",
+                        "goals": [
+                                "datetime.now(): Den aktuellen Moment einfangen.",
+                                "strftime: Zeit für Menschen lesbar machen.",
+                                "strptime: Texteingaben in Zeit-Objekte verwandeln.",
+                                "timedelta: Mit Tagen, Stunden und Minuten rechnen.",
+                                "Zeit-Differenz: Countdowns und Abstände berechnen."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Zeitstempel)",
+                                "goal": "Die aktuelle Zeit abrufen und verstehen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "from datetime import datetime\n\n# 1. Jetzt!\njetzt = datetime.now()\nprint(f\"Es ist gerade: {jetzt}\")\n\n# 2. Einzelne Teile\nprint(f\"Jahr: {jetzt.year}\")\nprint(f\"Monat: {jetzt.month}\")\nprint(f\"Stunde: {jetzt.hour}\")\n\n# 3. Ein eigenes Datum erstellen\ngeburtstag = datetime(2000, 5, 20, 14, 30)\nprint(f\"Erstellt: {geburtstag}\")",
+                                "checkpoint": " `datetime.now()` ist wie ein Foto der aktuellen Zeit. Du kannst jederzeit darauf zugreifen."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Die Uhr stellen (Formatierung)",
+                                "goal": "Datum in schönen Text verwandeln (und zurück).",
+                                "why": "`2024-05-20 14:12:05.123456` sieht hässlich aus. Wir wollen vielleicht nur `20. Mai`. Dafür gibt es Codes:",
+                                "instruction": "",
+                                "code": "jetzt = datetime.now()\n\n# 1. Datum -> Text (strftime = String From Time)\nschoener_text = jetzt.strftime(\"%d.%m.%Y - %H:%M\")\nprint(f\"📅 Formatiert: {schoener_text}\")\n\n# 2. Text -> Datum (strptime = String Parse Time)\ntext_datum = \"24.12.2024\"\nweihnachten = datetime.strptime(text_datum, \"%d.%m.%Y\")\nprint(f\"🎄 Objekt erstellt: {weihnachten}\")",
+                                "checkpoint": " `strftime` ist für die Anzeige. `strptime` ist, wenn der User ein Datum eintippt und du es in Python \"verstehbar\" machen musst."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Rechnen mit der Zeit (Timedelta)",
+                                "goal": "Wissen, was in der Zukunft oder Vergangenheit liegt.",
+                                "why": "Wie viel Uhr ist es in 100 Stunden? Welches Datum war vor 45 Tagen? `timedelta` erledigt das Rechnen für dich.",
+                                "instruction": "",
+                                "code": "from datetime import datetime, timedelta\n\nheute = datetime.now()\n\n# 1. 10 Tage in die Zukunft\nin_10_tagen = heute + timedelta(days=10)\nprint(f\"In 10 Tagen: {in_10_tagen.strftime('%d.%m.')}\")\n\n# 2. Diferenz berechnen\nweihnachten = datetime(heute.year, 12, 24)\ndifferenz = weihnachten - heute\n\nprint(f\"⏳ Noch {differenz.days} Tage bis Weihnachten!\")",
+                                "checkpoint": " Wenn du zwei `datetime`-Objekte voneinander abziehst, erhältst du ein `timedelta`. Das sagt dir genau die Tage, Stunden und Sekunden Unterschied."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 4,
+                "weekId": 4,
+                "title": "Der Würfelbecher (Random & Secrets)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Der Würfelbecher (Random & Secrets)",
+                        "description": "Generiere Zufallszahlen für Spiele und lerne, wie du absolut sichere Passwörter erstellst, die kein Hacker erraten kann.",
+                        "goals": [
+                                "random.randint: Zahlenbereiche auswürfeln.",
+                                "random.choice / sample: Aus Listen wählen.",
+                                "secrets: Sicherheit geht vor.",
+                                "string-Modul: Schneller Zugriff auf ABC und 123.",
+                                "Join-Trick: Einzelne Zeichen zu einem Passwort verschmelzen."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Spiele-Zufall)",
+                                "goal": "Zufällige Entscheidungen im Code treffen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import random\n\n# 1. Eine Zahl zwischen 1 und 6 (Würfel)\nwuerfel = random.randint(1, 6)\nprint(f\"🎲 Du hast eine {wuerfel} gewürfelt!\")\n\n# 2. Ein Element aus einer Liste wählen\nfarben = [\"Rot\", \"Blau\", \"Grün\", \"Gelb\"]\nwahl = random.choice(farben)\nprint(f\"🎨 Die Glücksfarbe ist: {wahl}\")\n\n# 3. Eine Liste durchmischen\nkarten = [7, 8, 9, 10, \"Bube\", \"Dame\", \"König\", \"Ass\"]\nrandom.shuffle(karten)\nprint(f\"🃏 Gemischte Karten: {karten}\")",
+                                "checkpoint": " `random` ist super für Spiele, aber es hat ein Geheimnis: Es ist \"pseudo-zufällig\". Ein Super-Computer könnte die Zahlen vorausberechnen."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Der Sicherheits-Zufall (Secrets)",
+                                "goal": "Echten Zufall für Passwörter nutzen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import secrets\nimport string\n\n# 1. Ein zufälliges Passwort-Zeichen wählen\nzeichen = string.ascii_letters + string.digits + \"!@#$%^&*\"\neinzel_zeichen = secrets.choice(zeichen)\n\n# 2. Ein sicheres Token für eine Web-URL (wie bei Passwort-Reset)\ntoken = secrets.token_urlsafe(16)\nprint(f\"🔗 Sicherheits-Token: {token}\")",
+                                "checkpoint": " Regel: Nutze `random` für Spiele. Nutze `secrets` für Passwörter!"
+                        },
+                        {
+                                "number": 3,
+                                "title": "Der Passwort-Generator (Projekt)",
+                                "goal": "Ein Tool bauen, das komplexe Passwörter ausspuckt.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import secrets\nimport string\n\ndef generiere_passwort(laenge=12):\n    # Alle möglichen Zeichen kombinieren\n    pool = string.ascii_letters + string.digits + string.punctuation\n    \n    # laenge-mal ein Zeichen aus dem Pool ziehen\n    passwort = \"\".join(secrets.choice(pool) for _ in range(laenge))\n    \n    return passwort\n\n# Test\nmein_pw = generiere_passwort(16)\nprint(f\"🔐 Dein neues sicheres Passwort:\\n{mein_pw}\")",
+                                "checkpoint": " `\"\".join(...)` klebt die vielen einzelnen Zeichen zu einem fertigen Wort zusammen."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 5,
+                "weekId": 4,
+                "title": "Die Internet-Brücke (Requests & APIs)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Die Internet-Brücke (Requests & APIs)",
+                        "description": "Verbinde dein Programm mit der Welt. Lerne, wie du Daten von Webseiten abrufst und eine echte Wetter-App baust.",
+                        "goals": [
+                                "requests.get: Webseiten und Daten anfordern.",
+                                "Status Codes: Was uns das Internet mitteilen will (200=OK, 404=Nicht gefunden).",
+                                "API: Die Schnittstelle für Computer-Kommunikation.",
+                                ".json(): Daten direkt im Code weiterverarbeiten.",
+                                "Parameter: Informationen in der URL mitschicken."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der digitale Kellner)",
+                                "goal": "Eine Webseite mit Python \"aufrufen\".",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import requests\n\n# Eine Bestellung abschicken\nantwort = requests.get(\"https://www.google.com\")\n\n# Hat es geklappt? (200 bedeutet OK)\nprint(f\"Status Code: {antwort.status_code}\")\n\n# Den \"Quellcode\" der Seite zeigen (nur die ersten 100 Zeichen)\nprint(f\"Inhalt: {antwort.text[:100]}...\")",
+                                "checkpoint": " `requests.get(url)` ist das wichtigste Werkzeug. Der Status-Code `200` ist dein grünes Licht."
+                        },
+                        {
+                                "number": 2,
+                                "title": "JSON aus dem Web (Die API)",
+                                "goal": "Strukturierte Daten (kein HTML) empfangen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import requests\n\n# Eine kostenlose API für Astronauten-Daten\nurl = \"http://api.open-notify.org/astros.json\"\n\nantwort = requests.get(url)\n\nif antwort.status_code == 200:\n    daten = antwort.json() # Verwandelt den Text-Salat sofort in ein Dict!\n    anzahl = daten[\"number\"]\n    print(f\"🚀 Aktuell sind {anzahl} Menschen im Weltraum!\")\n    \n    for person in daten[\"people\"]:\n        print(f\"  - {person['name']} (auf der {person['craft']})\")",
+                                "checkpoint": " Die Methode `.json()` ist die magische Brücke, die Internet-Daten direkt in Python-Verzeichnisse verwandelt."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Die Wetter-Station (Projekt)",
+                                "goal": "Live-Wetterdaten für deine Stadt abrufen.",
+                                "why": "Wir nutzen die kostenlose *Open-Meteo* API. Sie braucht keinen Account und keinen Key!",
+                                "instruction": "",
+                                "code": "import requests\n\ndef hol_wetter(lat, lon):\n    # URL mit Koordinaten (hier Berlin: 52.52, 13.41)\n    url = f\"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true\"\n    \n    antwort = requests.get(url)\n    if antwort.status_code == 200:\n        w = antwort.json()[\"current_weather\"]\n        temp = w[\"temperature\"]\n        wind = w[\"windspeed\"]\n        print(f\"🌡️ Aktuelle Temperatur: {temp}°C\")\n        print(f\"💨 Windgeschwindigkeit: {wind} km/h\")\n    else:\n        print(\"❌ Wetterdaten konnten nicht geladen werden.\")\n\n# Test Berlin\nhol_wetter(52.52, 13.41)",
+                                "checkpoint": " In der URL-Zeile werden oft Parameter (wie Breitengrad/Längengrad) mitgeschickt. Python kann diese mit F-Strings leicht zusammenbauen."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 6,
+                "weekId": 4,
+                "title": "Das digitale Sieb (Web Scraping)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Das digitale Sieb (Web Scraping)",
+                        "description": "Lade Informationen von Webseiten herunter, die keine API haben. Extrahiere automatisch Schlagzeilen oder Preise.",
+                        "goals": [
+                                "BeautifulSoup: Die Struktur hinter dem HTML verstehen.",
+                                "find / find_all: Gezielte Jagd auf Tags.",
+                                "select: CSS-Selektoren im Python-Code nutzen.",
+                                "attributes: Wie man Links (`href`) und Klassen ausliest.",
+                                "Ethik: Webseiten nicht durch zu viele Anfragen überlasten."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Die Lupe)",
+                                "goal": "HTML-Code in Python analysieren.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import requests\nfrom bs4 import BeautifulSoup\n\n# Wir simulieren eine einfache Webseite als Text\nhtml_code = \"\"\"\n<html>\n    <body>\n        <h1 id='titel'>Willkommen in meinem Blog</h1>\n        <p class='text'>Erster Beitrag über Python.</p>\n        <p class='text'>Zweiter Beitrag über Scraping.</p>\n        <a href='http://example.com'>Mehr lesen</a>\n    </body>\n</html>\n\"\"\"\n\n# Die \"Suppe\" kochen (HTML analysieren)\nsoup = BeautifulSoup(html_code, \"html.parser\")\n\n# Gezielt suchen\nueberschrift = soup.find(\"h1\").text\nprint(f\"📌 Titel gefunden: {ueberschrift}\")\n\nbeitraege = soup.find_all(\"p\", class_=\"text\")\nfor b in beitraege:\n    print(f\"📝 Beitrag: {b.text}\")",
+                                "checkpoint": " `soup.find` sucht das erste Vorkommen. `soup.find_all` sucht alle. Mit `text` bekommst du den reinen Inhalt ohne die HTML-Klammern."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Echte Webseiten anzapfen",
+                                "goal": "Live-Daten aus dem Web laden.",
+                                "why": "Du kannst jede URL laden und \"scrapen\". Wir brauchen aber einen Trick: Die Webseite muss denken, wir sind ein normaler Browser (kein Bot). Dafür nutzen wir `headers`.",
+                                "instruction": "",
+                                "code": "import requests\nfrom bs4 import BeautifulSoup\n\nurl = \"https://www.wikipedia.org\"\nheader = {\"User-Agent\": \"Mozilla/5.0\"}\n\nreaktion = requests.get(url, headers=header)\nsoup = BeautifulSoup(reaktion.text, \"html.parser\")\n\n# Wir suchen die Sprachen auf der Wikipedia-Startseite\nsprachen = soup.find_all(\"strong\") # Wikipedia nutzt strong für die Top-Sprachen\n\nprint(\"🌍 Top Sprachen auf Wikipedia:\")\nfor s in sprachen[:10]:\n    print(f\"  - {s.text}\")",
+                                "checkpoint": " Der `User-Agent` Header sagt der Webseite: \"Hallo, ich bin ein Firefox Browser\". Das verhindert oft, dass dein Programm blockiert wird."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Der News-Ticker (Projekt)",
+                                "goal": "Automatisch Schlagzeilen sammeln.",
+                                "why": "",
+                                "instruction": "Wir gehen auf eine Beispiel-Seite (oder eine echte News-Seite deiner Wahl) und sammeln alle Links in den Überschriften (`<a>` Tags innerhalb von `<h2>` oder `<h3>`).",
+                                "code": "import requests\nfrom bs4 import BeautifulSoup\n\nURL = \"https://news.ycombinator.com/\" # Hacker News (sehr einfach zu scrapen)\n\ndef hole_schlagzeilen():\n    r = requests.get(URL)\n    soup = BeautifulSoup(r.text, \"html.parser\")\n    \n    # Auf Hacker News haben alle Titel die Klasse 'titleline'\n    links = soup.select(\".titleline a\")\n    \n    print(\"🔥 TOP NEWS HEUTE:\")\n    for i, link in enumerate(links[:15], 1):\n        # Nur der erste Link im titleline-Containter ist die Schlagzeile\n        if \"https\" in link.get(\"href\"):\n             print(f\"{i}. {link.text}\")\n             print(f\"   🔗 {link.get('href')}\\n\")\n\nhole_schlagzeilen()",
+                                "checkpoint": " `soup.select` kann CSS-Editoren nutzen (wie `.klasse` oder `#id`). Das ist oft profimäßiger und schneller."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 7,
+                "weekId": 4,
+                "title": "Der Datentresor (SQLite)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Der Datentresor (SQLite)",
+                        "description": "Höre auf, Daten in Textdateien zu speichern. Lerne SQLite kennen und baue eine echte Datenbank für deine Aufgaben.",
+                        "goals": [
+                                "sqlite3: Die eingebaute Datenbank von Python.",
+                                "SQL Basics: CREATE, INSERT, SELECT, UPDATE, DELETE.",
+                                "Cursor: Der Befehlsausführer für Datenbanken.",
+                                "commit: Den Tresor sicher abschließen.",
+                                "Sicherheit: Parameter (`?`) statt F-Strings in SQL nutzen."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Der Datentresor)",
+                                "goal": "Eine Datenbank erstellen und Tabellen anlegen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import sqlite3\n\n# 1. Verbindung herstellen (Erstellt die Datei, falls sie nicht existiert)\nverbindung = sqlite3.connect(\"mein_planer.db\")\n\n# 2. Ein Cursor ist wie ein kleiner Roboter, der Befehle ausführt\ncursor = verbindung.cursor()\n\n# 3. Eine Tabelle erstellen (SQL-Sprache)\ncursor.execute(\"\"\"\nCREATE TABLE IF NOT EXISTS aufgaben (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    titel TEXT,\n    status TEXT\n)\n\"\"\")\n\n# 4. Speichern und Schließen\nverbindung.commit()\nverbindung.close()\nprint(\"✅ Datenbank ist bereit!\")",
+                                "checkpoint": " `sqlite3` ist in Python eingebaut. Es speichert alles in einer einzigen `.db` Datei. `commit()` ist der \"Speichern-Knopf\" – ohne ihn wird nichts dauerhaft übernommen."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Informationen speichern und abrufen",
+                                "goal": "Daten in die Tabelle schreiben (INSERT) und lesen (SELECT).",
+                                "why": "Du fütterst den Tresor mit Daten und fragst später gezielt danach.",
+                                "instruction": "",
+                                "code": "import sqlite3\n\nconn = sqlite3.connect(\"mein_planer.db\")\nc = conn.cursor()\n\n# Daten EINFÜGEN\naufgabe = (\"Python lernen\", \"offen\")\nc.execute(\"INSERT INTO aufgaben (titel, status) VALUES (?, ?)\", aufgabe)\nconn.commit()\n\n# Daten LESEN\nc.execute(\"SELECT * FROM aufgaben\")\nalle_aufgaben = c.fetchall()\n\nfor spalte in alle_aufgaben:\n    print(f\"ID: {spalte[0]} | Titel: {spalte[1]} | Status: {spalte[2]}\")\n\nconn.close()",
+                                "checkpoint": " Nutze niemals F-Strings für SQL-Befehle (Sicherheitsrisiko!). Nutze das Fragezeichen `?` und übergib die Daten als Tupel."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Aktualisieren und Löschen (CRUD)",
+                                "goal": "Bestehende Einträge ändern oder entfernen.",
+                                "why": "Aufgaben werden fertiggestellt (Update) oder man hat sich verschrieben (Delete).",
+                                "instruction": "",
+                                "code": "import sqlite3\n\nconn = sqlite3.connect(\"mein_planer.db\")\nc = conn.cursor()\n\n# 1. UPDATE: Status ändern (Wo die ID 1 ist)\nc.execute(\"UPDATE aufgaben SET status = 'erledigt' WHERE id = 1\")\n\n# 2. DELETE: Eine Aufgabe löschen\n# c.execute(\"DELETE FROM aufgaben WHERE id = 1\")\n\nconn.commit()\nconn.close()\nprint(\"✅ Update erfolgreich.\")",
+                                "checkpoint": " Das `WHERE` ist extrem wichtig! Ohne `WHERE` würde `DELETE` alle Zeilen in der Tabelle löschen."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 8,
+                "weekId": 4,
+                "title": "Das Schweizer Taschenmesser (Finanz-Projekt)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Das Schweizer Taschenmesser (Finanz-Projekt)",
+                        "description": "Kombiniere alles, was du gelernt hast (Listen, Dictionaries, Dateien, Zeit), zu einer nützlichen App: Einem persönlichen Finanz-Manager.",
+                        "goals": [
+                                "Integration: Wie verschiedene Themen (JSON, Datetime, Klassen) zusammen eine App ergeben.",
+                                "Code-Struktur: Warum OOP (Klassen) für wachsende Programme besser ist.",
+                                "Data Processing: Daten filtern, summieren und gruppieren.",
+                                "User Experience: Ein einfaches Menü flüssig bedienbar machen.",
+                                "Persistenz: Eine echte App bauen, die ihre Daten niemals vergisst."
+                        ]
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Die App-Architektur",
+                                "goal": "Daten und Logik trennen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "import json\nfrom datetime import datetime\n\nclass FinanzManager:\n    def __init__(self, datei=\"meine_finanzen.json\"):\n        self.datei = datei\n        self.ausgaben = self._laden()\n\n    def _laden(self):\n        try:\n            with open(self.datei, \"r\") as f:\n                return json.load(f)\n        except (FileNotFoundError, json.JSONDecodeError):\n            return []\n\n    def speichern(self):\n        with open(self.datei, \"w\") as f:\n            json.dump(self.ausgaben, f, indent=4)",
+                                "checkpoint": " Die private Methode `_laden()` kümmert sich um den Dateizugriff, sodass du im restlichen Programm nur noch mit `self.ausgaben` arbeitest."
+                        },
+                        {
+                                "number": 2,
+                                "title": "Die Logik (Rechnen & Hinzufügen)",
+                                "goal": "Funktionen zum Verarbeiten der Daten einbauen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "    def neue_ausgabe(self, titel, betrag, kategorie):\n        eintrag = {\n            \"datum\": datetime.now().strftime(\"%Y-%m-%d\"),\n            \"titel\": titel,\n            \"betrag\": float(betrag),\n            \"kategorie\": kategorie\n        }\n        self.ausgaben.append(eintrag)\n        self.speichern()\n\n    def gesamt_summe(self):\n        return sum(item[\"betrag\"] for item in self.ausgaben)\n\n    def stats_nach_kategorie(self):\n        stats = {}\n        for item in self.ausgaben:\n            kat = item[\"kategorie\"]\n            stats[kat] = stats.get(kat, 0) + item[\"betrag\"]\n        return stats",
+                                "checkpoint": " Hier nutzen wir Dictionaries (Tag 8), Listen-Manipulation (Tag 4) und Summen-Generation."
+                        },
+                        {
+                                "number": 3,
+                                "title": "Das Terminal-Interface (Das Gehirn)",
+                                "goal": "Alles zusammenfügen und steuerbar machen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "def main():\n    manager = FinanzManager()\n    \n    while True:\n        print(\"\\n--- 💰 FINANZ-MANAGER ---\")\n        print(f\"Aktueller Kontostand: -{manager.gesamt_summe():.2f} €\")\n        print(\"1. Neue Ausgabe | 2. Verlauf | 3. Statistiken | 4. Ende\")\n        \n        wahl = input(\"Auswahl: \")\n        \n        if wahl == \"1\":\n            t = input(\"Was hast du gekauft? \")\n            b = input(\"Wie viel hat es gekostet? \")\n            k = input(\"Kategorie (Essen/Freizeit/...): \")\n            manager.neue_ausgabe(t, b, k)\n            \n        elif wahl == \"2\":\n            for a in manager.ausgaben:\n                print(f\"[{a['datum']}] {a['titel']}: -{a['betrag']} € ({a['kategorie']})\")\n                \n        elif wahl == \"3\":\n            for kat, summe in manager.stats_nach_kategorie().items():\n                print(f\"📍 {kat}: {summe:.2f} €\")\n                \n        elif wahl == \"4\":\n            print(\"👋 Spar schön weiter!\")\n            break\n\nif __name__ == \"__main__\":\n    main()",
+                                "checkpoint": " Diese `main()` Funktion ist das Herzstück. Sie verbindet deine Logik mit der echten Welt (dem Benutzer)."
+                        },
+                        {
+                                "number": 4,
+                                "title": "Challenge Time!",
+                                "goal": "",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+        {
+                "id": 9,
+                "weekId": 4,
+                "title": "Das Finale (Produktivitäts-Hub)",
+                "duration": "45-60 min",
+                "task": {
+                        "title": "Das Finale (Produktivitäts-Hub)",
+                        "description": "HERZLICHEN GLÜCKWUNSCH! Du hast 30 Tage durchgezogen. Heute baust du dein Meisterwerk: Eine modulare Zentrale, die all deine bisherigen Tools an einem Ort vereint.",
+                        "goals": []
+                },
+                "steps": [
+                        {
+                                "number": 1,
+                                "title": "Das mentale Modell (Die Kommando-Zentrale)",
+                                "goal": "Eine Oberfläche für mehrere Module bauen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "# DAS GERÜST\nimport os\n\nclass MyHabitHub:\n    def __init__(self):\n        self.username = \"Python-Held\"\n        self.modules = [\"Wetter\", \"Finanzen\", \"Notizen\", \"Passwort-Gen\"]\n\n    def zeige_willkommen(self):\n        os.system('cls' if os.name == 'nt' else 'clear')\n        print(\"=\" * 40)\n        print(f\"🌟 WILLKOMMEN IM HUB, {self.username.upper()} 🌟\")\n        print(\"=\" * 40)",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 2,
+                                "title": "Module integrieren",
+                                "goal": "Vorhandene Skripte als Funktionen oder Klassen einbinden.",
+                                "why": "Du musst das Rad nicht neu erfinden. Wir nutzen den Code von Tag 26 (Wetter), Tag 29 (Finanzen) und Tag 12 (Notizen) und fügen sie hier ein.",
+                                "instruction": "",
+                                "code": "    # Beispiel Integration Wetter (von Tag 26)\n    def wetter_modul(self):\n        print(\"\\n🌤️ Lade Live-Wetter...\")\n        # Hier käme dein requests-Code von Tag 26 hin!\n        print(\"Status: 22°C (Sonnig) in Berlin.\")\n        input(\"\\n[Enter] zum Hub zurück...\")\n\n    # Beispiel Integration Finanzen (von Tag 29)\n    def finanz_modul(self):\n        print(\"\\n💰 Finanzübersicht:\")\n        # Hier käme deine FinanzManager-Klasse hin!\n        input(\"\\n[Enter] zum Hub zurück...\")",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 3,
+                                "title": "Die Hauptschleife (Der Motor)",
+                                "goal": "Ein flüssiges App-Gefühl erzeugen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "    def run(self):\n        while True:\n            self.zeige_willkommen()\n            for i, mod in enumerate(self.modules, 1):\n                print(f\"{i}. {mod}\")\n            print(\"0. Beenden\")\n            \n            wahl = input(\"\\nWas möchtest du tun? \")\n            \n            if wahl == \"1\": self.wetter_modul()\n            elif wahl == \"2\": self.finanz_modul()\n            elif wahl == \"0\": \n                print(\"👋 Bis morgen!\")\n                break",
+                                "checkpoint": ""
+                        },
+                        {
+                                "number": 4,
+                                "title": "Dein Abschluss-Zertifikat",
+                                "goal": "Eigenständig eine NEUE Funktion hinzufügen.",
+                                "why": "",
+                                "instruction": "",
+                                "code": "",
+                                "checkpoint": ""
+                        }
+                ]
+        },
+      ]
+    },
+  ]
+};
+
+// Helper functions
+const getData = {
+  getWeek(weekId) {
+    return courseData.weeks.find(w => w.id === weekId);
+  },
+  
+  getDay(weekId, dayId) {
+    const week = this.getWeek(weekId);
+    if (!week) return null;
+    return week.days.find(d => d.id === dayId);
+  },
+  
+  getTotalDays() {
+    return courseData.weeks.reduce((total, week) => total + week.days.length, 0);
+  },
+  
+  getAllDays() {
+    const allDays = [];
+    courseData.weeks.forEach(week => {
+      week.days.forEach(day => {
+        allDays.push({ weekId: week.id, dayId: day.id, ...day });
+      });
+    });
+    return allDays;
+  }
+};
