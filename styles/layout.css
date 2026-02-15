@@ -42,15 +42,16 @@
     padding: var(--space-8) 0;
 }
 
-/* Week Overview Grid */
+/* Week Overview Grid - Bento Style */
 .weeks-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    grid-auto-rows: minmax(180px, auto);
+    gap: var(--space-4);
     margin-top: var(--space-8);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
     .weeks-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -58,14 +59,41 @@
 
 @media (min-width: 1024px) {
     .weeks-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-8);
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
     }
 }
 
 @media (min-width: 1280px) {
     .weeks-grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.bento-item--large {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+@media (min-width: 640px) {
+    .bento-item--large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .bento-item--wide {
+        grid-column: span 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .bento-item--large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .bento-item--wide {
+        grid-column: span 2;
     }
 }
 
@@ -123,9 +151,7 @@
     top: calc(var(--space-20) + 20px);
 }
 
-.lesson-view__guide {
-    /* Guide scrolls naturally */
-}
+/* Guide scrolls naturally */
 
 /* Breadcrumb Navigation */
 .breadcrumb {

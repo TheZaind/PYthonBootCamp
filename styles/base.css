@@ -139,8 +139,10 @@ img {
 
 /* Focus Styles for Accessibility */
 :focus-visible {
-    outline: 2px solid var(--color-primary-orange);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px var(--color-bg-primary), 0 0 0 5px var(--color-primary-orange);
+    border-radius: var(--radius-sm);
+    z-index: 10;
 }
 
 button:focus-visible,
@@ -148,8 +150,10 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-    outline: 2px solid var(--color-primary-orange);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px var(--color-bg-primary), 0 0 0 5px var(--color-primary-orange);
+    border-radius: var(--radius-sm);
+    z-index: 10;
 }
 
 /* Selection */

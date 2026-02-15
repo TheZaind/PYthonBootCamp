@@ -34,13 +34,38 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`📊 Progress: ${State.getProgressPercentage(appState)}%`);
     console.log(`🔥 Streak: ${appState.streak} days`);
     console.log(`⭐ XP: ${appState.totalXP}`);
+
+    // Achievement modal listeners
+    const achievementsBtn = document.getElementById('achievements-btn');
+    const achievementModalClose = document.getElementById('achievement-modal-close');
+    const achievementModal = document.getElementById('achievement-modal');
+
+    if (achievementsBtn) {
+        achievementsBtn.addEventListener('click', () => UI.toggleAchievementModal());
+    }
+
+    if (achievementModalClose) {
+        achievementModalClose.addEventListener('click', () => UI.toggleAchievementModal());
+    }
+
+    if (achievementModal) {
+        achievementModal.addEventListener('click', (e) => {
+            // Close modal when clicking backdrop
+            if (e.target === achievementModal) {
+                UI.toggleAchievementModal();
+            }
+        });
+    }
 });
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
-    // ESC: Go back
+    // ESC: Go back or close modal
     if (e.key === 'Escape') {
-        if (Navigation.currentView.type !== 'home') {
+        const modal = document.getElementById('achievement-modal');
+        if (modal && modal.style.display === 'flex') {
+            UI.toggleAchievementModal();
+        } else if (Navigation.currentView.type !== 'home') {
             Navigation.goBack();
         }
     }

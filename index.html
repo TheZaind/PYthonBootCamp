@@ -56,6 +56,27 @@
               <div class="stat__label">XP</div>
             </div>
           </div>
+
+          <div class="stat stat--level" id="level-stat">
+            <div class="level-badge" id="level-badge">1</div>
+            <div>
+              <div class="stat__value" id="level-label">Level 1</div>
+              <div class="xp-to-next">
+                <div class="xp-to-next__bar">
+                  <div class="xp-to-next__fill" id="xp-to-next-fill" style="width: 0%"></div>
+                </div>
+                <span class="xp-to-next__text" id="xp-to-next-text">0/100 XP</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="stat stat--achievements" id="achievements-btn" title="Achievements anzeigen">
+            <span class="stat__icon">🏆</span>
+            <div>
+              <div class="stat__value" id="achievements-count">0</div>
+              <div class="stat__label">Badges</div>
+            </div>
+          </button>
         </div>
 
         <div class="progress-ring">
@@ -99,6 +120,15 @@
               Lerne Python Schritt für Schritt mit interaktiven Übungen und praktischen Projekten.
               Jeden Tag 5-15 Minuten für deinen Erfolg!
             </p>
+          </div>
+
+          <!-- Motivation Banner -->
+          <div class="motivation-banner" id="motivation-banner">
+            <div class="motivation-banner__icon">💡</div>
+            <div class="motivation-banner__content">
+              <div class="motivation-banner__quote" id="motivation-quote"></div>
+              <div class="motivation-banner__source" id="motivation-source"></div>
+            </div>
           </div>
 
           <div class="weeks-grid stagger-children" id="weeks-grid">
@@ -153,12 +183,30 @@
             <!-- Guide Panel (Right) -->
             <div class="lesson-view__guide">
               <div class="card">
-                <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">
-                  📚 Schritt-für-Schritt Anleitung
-                </h3>
+                <!-- Slide Progress -->
+                <div class="step-progress" id="slide-progress">
+                  <div class="step-progress__info">
+                    <span id="slide-progress-text">1 / 10</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-bar__fill" id="slide-progress-fill" style="width: 10%"></div>
+                  </div>
+                </div>
 
-                <div class="accordion" id="steps-accordion">
-                  <!-- Steps will be dynamically generated here -->
+                <!-- Slide Container -->
+                <div id="slide-container" class="slide-container">
+                  <!-- Slides will be rendered here -->
+                </div>
+
+                <!-- Slide Navigation -->
+                <div class="lesson-nav" id="slide-nav">
+                  <button class="btn btn--secondary" id="slide-prev-btn" onclick="SlideRenderer.previous()">
+                    ← Zurück
+                  </button>
+                  <div class="lesson-nav__spacer"></div>
+                  <button class="btn btn--primary" id="slide-next-btn" onclick="SlideRenderer.next()">
+                    Weiter →
+                  </button>
                 </div>
               </div>
             </div>
@@ -186,6 +234,19 @@
     <!-- Confetti particles will be dynamically created here -->
   </div>
 
+  <!-- Achievement Modal -->
+  <div class="modal-backdrop" id="achievement-modal" style="display: none;">
+    <div class="modal">
+      <div class="modal__header">
+        <h2>🏆 Deine Achievements</h2>
+        <button class="modal__close" id="achievement-modal-close">&times;</button>
+      </div>
+      <div class="modal__body" id="achievement-list">
+        <!-- Achievement cards will be dynamically generated here -->
+      </div>
+    </div>
+  </div>
+
 
   <!-- Highlight.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -200,6 +261,7 @@
   <script src="js/state.js"></script>
   <script src="js/gamification.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/slide-renderer.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/app.js"></script>

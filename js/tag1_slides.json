@@ -1,0 +1,129 @@
+[
+    {
+        "type": "content",
+        "title": "🏭 Programme sind wie Fabriken",
+        "content": "Jedes Computerprogramm macht drei Dinge:\\n\\n1. **Input** 📥 - Daten holen (z.B. vom User)\\n2. **Process** ⚙️ - Daten verarbeiten (rechnen, vergleichen)\\n3. **Output** 📤 - Ergebnis zeigen\\n\\nDas nennt man das **IPO-Prinzip**. Schau dir das Diagramm unten an:",
+        "visual": {
+            "type": "mermaid",
+            "data": "graph LR\\n    A[📥 Input] --> B[⚙️ Process]\\n    B --> C[📤 Output]\\n    style A fill:#FF6B35,stroke:#fff,stroke-width:2px,color:#fff\\n    style B fill:#A855F7,stroke:#fff,stroke-width:2px,color:#fff\\n    style C fill:#10B981,stroke:#fff,stroke-width:2px,color:#fff"
+        },
+        "highlight": "💡 Merke: Jedes Programm folgt IPO - Input → Process → Output"
+    },
+    {
+        "type": "quiz",
+        "quizType": "multipleChoice",
+        "question": "Was bedeutet das 'I' im IPO-Prinzip?",
+        "options": [
+            "Internet",
+            "Input (Eingabe)",
+            "Information",
+            "Integer (Ganzzahl)"
+        ],
+        "correctIndex": 1,
+        "explanation": "Richtig!  'I' steht für Input - das Holen von Daten ins Programm."
+    },
+    {
+        "type": "content",
+        "title": "📦 Variablen = Umzugskisten",
+        "content": "Computer sind **vergesslich**. Ohne Variablen vergessen sie jede Zahl sofort wieder!\\n\\nEine Variable ist wie eine **Umzugskiste**:\\n\\n1. Du nimmst eine leere Kiste 📦\\n2. Du klebst ein **Etikett** drauf (der Name)\\n3. Du legst etwas **hinein** (der Wert)",
+        "code": {
+            "language": "python",
+            "snippet": "# Wir erstellen eine Box namens 'alter'\\n# und legen die Zahl 25 hinein\\nalter = 25\\n\\n# Wir schauen in die Box (Output)\\nprint(alter)  # Ausgabe: 25"
+        },
+        "highlight": "⚠️ Das '=' bedeutet: \\\"Speichere rechts in links\\\" (NICHT \\\"ist gleich\\\" wie in Mathe!)"
+    },
+    {
+        "type": "quiz",
+        "quizType": "trueFalse",
+        "statement": "Das Gleichheitszeichen (=) bedeutet in Python 'ist gleich' wie in der Mathematik.",
+        "correct": false,
+        "explanation": "Falsch! In Python bedeutet '=' → 'speichere den Wert rechts in der Variable links'. Für Vergleiche benutzt man '=='."
+    },
+    {
+        "type": "content",
+        "title": "🔢 Datentypen: Text vs. Zahl",
+        "content": "**Für dich** mag `10` und `\\\"10\\\"` gleich aussehen.\\n**Für den Computer** ist das ein riesiger Unterschied!\\n\\n- `10` → Zahl (kannst du damit rechnen)\\n- `\\\"10\\\"` → Text/String (wird zusammengeklebt)\\n\\nSchau was passiert:",
+        "code": {
+            "language": "python",
+            "snippet": "# Was passiert hier wohl?\\nzahl1 = \\\"10\\\"  # Text!\\nzahl2 = \\\"5\\\"   # Text!\\n\\nergebnis = zahl1 + zahl2\\nprint(ergebnis)  # Ausgabe: 105 😲"
+        },
+        "highlight": "💡 Bei Texten bedeutet '+' → zusammenkleben! \\\"Hallo\\\" + \\\"Welt\\\" = \\\"HalloWelt\\\""
+    },
+    {
+        "type": "quiz",
+        "quizType": "matching",
+        "question": "Verbinde die richtigen Paare:",
+        "pairs": [
+            {
+                "left": "\\\"42\\\"",
+                "right": "String (Text)"
+            },
+            {
+                "left": "42",
+                "right": "Integer (Ganzzahl)"
+            },
+            {
+                "left": "3.14",
+                "right": "Float (Kommazahl)"
+            }
+        ]
+    },
+    {
+        "type": "content",
+        "title": "🔄 Der Transformer: input() & Casting",
+        "content": "**Problem**: Der Befehl `input()` holt IMMER Text. Auch wenn du eine Zahl eingibst!\\n\\n**Lösung**: Wir brauchen einen 'Transformer' um Text in Zahlen umzuwandeln:\\n\\n- `int()` → Wandelt in Ganzzahl um\\n- `float()` → Wandelt in Kommazahl um",
+        "code": {
+            "language": "python",
+            "snippet": "# 1. INPUT: Wir holen Text vom User\\neingabe = input(\\\"Gib eine Zahl ein: \\\")  # z.B. \\\"42\\\"\\n\\n# 2. TRANSFORM: Text → Zahl\\nzahl = float(eingabe)  # Jetzt: 42.0\\n\\n# ODER alles in einer Zeile (Profi-Tipp):\\nzahl2 = float(input(\\\"Zweite Zahl: \\\"))"
+        }
+    },
+    {
+        "type": "quiz",
+        "quizType": "ordering",
+        "question": "Bringe die Schritte für einen Taschenrechner in die richtige Reihenfolge:",
+        "items": [
+            "Input vom User holen",
+            "Text in Zahl umwandeln (Casting)",
+            "Berechnung durchführen",
+            "Ergebnis ausgeben"
+        ]
+    },
+    {
+        "type": "content",
+        "title": "🧮 Rechenoperationen",
+        "content": "Python kann rechnen wie ein Taschenrechner:\\n\\n- `+` Addition\\n- `-` Subtraktion\\n- `*` Multiplikation\\n- `/` Division\\n- `**` Potenz (z.B. `2 ** 3` = 8)\\n- `%` Modulo (Rest einer Division)",
+        "code": {
+            "language": "python",
+            "snippet": "x = 10\\ny = 3\\n\\nprint(x + y)   # 13\\nprint(x - y)   # 7\\nprint(x * y)   # 30\\nprint(x / y)   # 3.333...\\nprint(x ** y)  # 1000 (10³)\\nprint(x % y)   # 1 (Rest von 10÷3)"
+        }
+    },
+    {
+        "type": "quiz",
+        "quizType": "multipleChoice",
+        "question": "Was ist das Ergebnis von: x = 7 % 3",
+        "options": [
+            "2.333",
+            "2",
+            "1",
+            "21"
+        ],
+        "correctIndex": 2,
+        "explanation": "Richtig! Der Modulo-Operator % gibt den Rest zurück. 7 ÷ 3 = 2 Rest 1"
+    },
+    {
+        "type": "content",
+        "title": "🎯 Dein Projekt: Super-Rechner 3000",
+        "content": "Jetzt setzen wir alles zusammen!\\n\\nTippe den Code ab (nicht kopieren!) und versuche bei jeder Zeile zu verstehen, was passiert:",
+        "code": {
+            "language": "python",
+            "snippet": "print(\\\"🧮 SUPER-RECHNER 3000\\\")\\nprint(\\\"---------------------\\\")\\n\\n# 1. Input holen & direkt umwandeln\\nx = float(input(\\\"Erste Zahl: \\\"))\\ny = float(input(\\\"Zweite Zahl: \\\"))\\n\\n# 2. Verarbeiten\\nplus = x + y\\nminus = x - y\\nmal = x * y\\ngeteilt = x / y\\n\\n# 3. Output mit f-Strings\\nprint(f\\\"\\\\nErgebnisse für {x} und {y}:\\\")\\nprint(f\\\"➕ Summe:     {plus}\\\")\\nprint(f\\\"➖ Differenz: {minus}\\\")\\nprint(f\\\"✖️ Produkt:   {mal}\\\")\\nprint(f\\\"➗ Quotient:  {geteilt}\\\")"
+        },
+        "highlight": "🚀 Teste deinen Rechner mit verschiedenen Zahlen!"
+    },
+    {
+        "type": "content",
+        "title": "🎉 Geschafft! Tag 1 Complete",
+        "content": "**Herzlichen Glückwunsch!** Du hast gelernt:\\n\\n✅ IPO-Prinzip: Input → Process → Output\\n✅ Variablen erstellen und nutzen\\n✅ Unterschied zwischen Text und Zahlen\\n✅ Input vom User holen und umwandeln\\n✅ Mathematische Operationen\\n✅ Deinen ersten interaktiven Rechner gebaut!\\n\\n**Nächster Schritt**: Tag 2 - Strings & Text-Manipulation",
+        "highlight": "💪 Du bist auf dem besten Weg, ein Python-Entwickler zu werden!"
+    }
+]

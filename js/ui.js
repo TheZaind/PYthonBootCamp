@@ -16,6 +16,9 @@ const UI = {
       const card = this.createWeekCard(week, progress);
       grid.appendChild(card);
     });
+
+    // Render motivation banner
+    this.renderMotivationBanner();
   },
 
   // Create week card element
@@ -31,6 +34,13 @@ const UI = {
       green: '#10B981'
     };
 
+    // Bento Grid Logic
+    if (week.id === 1) {
+      card.classList.add('bento-item--large');
+    } else if (week.id === 2 || week.id === 5) {
+      card.classList.add('bento-item--wide');
+    }
+
     card.innerHTML = `
       <div class="week-card__header">
         <div class="week-card__number" style="color: ${colorMap[week.color] || colorMap.orange}">
@@ -42,8 +52,10 @@ const UI = {
           </div>
         </div>
       </div>
-      <h3 class="week-card__title">${week.title}</h3>
-      <p class="week-card__subtitle">${week.subtitle}</p>
+      <div style="flex: 1;">
+         <h3 class="week-card__title">${week.title}</h3>
+         <p class="week-card__subtitle">${week.subtitle}</p>
+      </div>
       <div class="week-card__progress">
         <div class="progress-bar">
           <div class="progress-bar__fill" style="width: ${progress.percentage}%"></div>
@@ -54,6 +66,10 @@ const UI = {
         <span style="color: ${colorMap[week.color] || colorMap.orange}">${progress.percentage}%</span>
       </div>
     `;
+
+    // Add flex column style for bento cards to stretch content
+    card.style.display = 'flex';
+    card.style.flexDirection = 'column';
 
     return card;
   },
@@ -94,11 +110,29 @@ const UI = {
 
     const icon = isCompleted ? '✓' : isLocked ? '🔒' : '📖';
 
+    // Calculate step/slide progress for dots
+    const items = day.slides || day.steps || [];
+    const totalItems = items.length;
+    // For now, simplify dot rendering or use slide progress
+    // TODO: Update state tracking for slides
+
+    let dotsHTML = '';
+    if (totalItems > 0) {
+      dotsHTML = '<div class="day-card__step-dots">';
+      // Simplified: just show total dots, maybe colored if day is completed
+      for (let i = 1; i <= Math.min(totalItems, 12); i++) { // Limit dots to 12
+        // Fallback logic for dots
+        dotsHTML += `<div class="step-dot ${isCompleted ? 'step-dot--completed' : ''}"></div>`;
+      }
+      dotsHTML += '</div>';
+    }
+
     card.innerHTML = `
       <div class="day-card__icon">${icon}</div>
       <div class="day-card__number">Tag ${day.id}</div>
       <div class="day-card__title">${day.title}</div>
       <div class="day-card__duration">${day.duration}</div>
+      ${dotsHTML}
     `;
 
     return card;
@@ -116,10 +150,15 @@ const UI = {
     // Render task
     this.renderTask(day.task);
 
-    // Render steps
-    this.renderSteps(day.steps, weekId, dayId);
+    // Initialize Slide Renderer
+    if (typeof SlideRenderer !== 'undefined') {
+      SlideRenderer.loadDay(weekId, dayId);
+    } else {
+      console.error('SlideRenderer not loaded!');
+      // Fallback or Error
+    }
 
-    // Update complete button
+    // Update complete button (managed by SlideRenderer now mostly, but keep for fallback)
     const completeBtn = document.getElementById('complete-lesson-btn');
     const isCompleted = State.isDayCompleted(appState, weekId, dayId);
 
@@ -127,7 +166,6 @@ const UI = {
       completeBtn.textContent = '✓ Abgeschlossen';
       completeBtn.disabled = true;
       completeBtn.className = 'btn btn--secondary btn--large';
-      completeBtn.style.width = '100%';
     } else {
       completeBtn.textContent = '✓ Tag abschließen';
       completeBtn.disabled = false;
@@ -268,6 +306,17 @@ const UI = {
     this.renderLessonView(weekId, dayId);
   },
 
+  // Get completed steps count for a day
+  getCompletedStepsCount(weekId, dayId, totalSteps) {
+    let count = 0;
+    for (let i = 1; i <= totalSteps; i++) {
+      if (State.isStepCompleted(appState, weekId, dayId, i)) {
+        count++;
+      }
+    }
+    return count;
+  },
+
   // Complete a day
   completeDay(weekId, dayId) {
     const oldXP = appState.totalXP;
@@ -317,6 +366,29 @@ const UI = {
       }
     }
 
+    // Update level display
+    const level = Gamification.getLevel(appState.totalXP);
+    const levelBadge = document.getElementById('level-badge');
+    const levelLabel = document.getElementById('level-label');
+    if (levelBadge) levelBadge.textContent = level;
+    if (levelLabel) levelLabel.textContent = `Level ${level}`;
+
+    // Update XP progress to next level
+    const levelProgress = Gamification.getLevelProgress(appState.totalXP);
+    const nextLevelXP = Gamification.getXPForNextLevel(appState.totalXP);
+    const currentLevelXP = level === 1 ? 0 : Gamification.getXPForNextLevel(appState.totalXP - 1);
+    const xpInLevel = appState.totalXP - currentLevelXP;
+    const xpNeeded = nextLevelXP - currentLevelXP;
+
+    const xpFill = document.getElementById('xp-to-next-fill');
+    const xpText = document.getElementById('xp-to-next-text');
+    if (xpFill) xpFill.style.width = `${levelProgress}%`;
+    if (xpText) xpText.textContent = `${xpInLevel}/${xpNeeded} XP`;
+
+    // Update achievements count
+    const achievementsCount = document.getElementById('achievements-count');
+    if (achievementsCount) achievementsCount.textContent = appState.achievements.length;
+
     const percentage = State.getProgressPercentage(appState);
     Animations.updateProgressRing(percentage);
   },
@@ -339,5 +411,124 @@ const UI = {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+  },
+
+  // Render motivation banner
+  renderMotivationBanner() {
+    const quotes = [
+      { quote: "Der beste Weg, die Zukunft vorherzusagen, ist, sie zu programmieren.", source: "— Alan Kay" },
+      { quote: "Code ist wie Humor. Wenn du ihn erklären musst, ist er schlecht.", source: "— Cory House" },
+      { quote: "Jeder Experte war einmal ein Anfänger.", source: "— Helen Hayes" },
+      { quote: "Programmieren ist die Kunst, einem Computer zu sagen, was er tun soll.", source: "— Donald Knuth" },
+      { quote: "Fehler sind die Portale der Entdeckung.", source: "— James Joyce" },
+      { quote: "Python ist eine Sprache, die man in einem Wochenende lernen kann.", source: "— Guido van Rossum" },
+      { quote: "Der einzige Weg, großartige Arbeit zu leisten, ist zu lieben, was man tut.", source: "— Steve Jobs" }
+    ];
+
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    const quoteEl = document.getElementById('motivation-quote');
+    const sourceEl = document.getElementById('motivation-source');
+
+    if (quoteEl) quoteEl.textContent = `"${randomQuote.quote}"`;
+    if (sourceEl) sourceEl.textContent = randomQuote.source;
+  },
+
+  // Update step progress bar
+  updateStepProgress(weekId, dayId, steps) {
+    const totalSteps = steps.length;
+    const completedSteps = this.getCompletedStepsCount(weekId, dayId, totalSteps);
+    const percentage = totalSteps > 0 ? Math.round((completedSteps / totalSteps) * 100) : 0;
+
+    const progressText = document.getElementById('step-progress-text');
+    const progressPercent = document.getElementById('step-progress-percent');
+    const progressFill = document.getElementById('step-progress-fill');
+
+    if (progressText) progressText.textContent = `${completedSteps} von ${totalSteps} Schritten`;
+    if (progressPercent) progressPercent.textContent = `${percentage}%`;
+    if (progressFill) progressFill.style.width = `${percentage}%`;
+  },
+
+  // Update lesson navigation buttons
+  updateLessonNavigation(weekId, dayId) {
+    const prevBtn = document.getElementById('prev-lesson-btn');
+    const nextBtn = document.getElementById('next-lesson-btn');
+
+    // Find current week and day
+    const week = getData.getWeek(weekId);
+    if (!week) return;
+
+    const currentDayIndex = week.days.findIndex(d => d.id === dayId);
+
+    // Previous day logic
+    if (currentDayIndex > 0) {
+      const prevDay = week.days[currentDayIndex - 1];
+      prevBtn.style.display = 'inline-flex';
+      prevBtn.onclick = () => Navigation.showLessonView(weekId, prevDay.id);
+    } else if (weekId > 1) {
+      // Go to last day of previous week
+      const prevWeek = getData.getWeek(weekId - 1);
+      if (prevWeek && prevWeek.days.length > 0) {
+        const lastDay = prevWeek.days[prevWeek.days.length - 1];
+        prevBtn.style.display = 'inline-flex';
+        prevBtn.onclick = () => Navigation.showLessonView(weekId - 1, lastDay.id);
+      } else {
+        prevBtn.style.display = 'none';
+      }
+    } else {
+      prevBtn.style.display = 'none';
+    }
+
+    // Next day logic
+    if (currentDayIndex < week.days.length - 1) {
+      const nextDay = week.days[currentDayIndex + 1];
+      nextBtn.style.display = 'inline-flex';
+      nextBtn.onclick = () => Navigation.showLessonView(weekId, nextDay.id);
+    } else if (weekId < courseData.weeks.length) {
+      // Go to first day of next week
+      const nextWeek = getData.getWeek(weekId + 1);
+      if (nextWeek && nextWeek.days.length > 0) {
+        const firstDay = nextWeek.days[0];
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.onclick = () => Navigation.showLessonView(weekId + 1, firstDay.id);
+      } else {
+        nextBtn.style.display = 'none';
+      }
+    } else {
+      nextBtn.style.display = 'none';
+    }
+  },
+
+  // Render achievement modal
+  renderAchievementModal() {
+    const achievementList = document.getElementById('achievement-list');
+    if (!achievementList) return;
+
+    const gridHTML = '<div class="achievement-grid">' +
+      Gamification.achievements.map(achievement => {
+        const isUnlocked = appState.achievements.includes(achievement.id);
+        return `
+          <div class="achievement-card ${isUnlocked ? 'achievement-card--unlocked' : 'achievement-card--locked'}">
+            <div class="achievement-card__icon">${achievement.title.split(' ')[0]}</div>
+            <div class="achievement-card__title">${achievement.title}</div>
+            <div class="achievement-card__description">${achievement.description}</div>
+          </div>
+        `;
+      }).join('') +
+      '</div>';
+
+    achievementList.innerHTML = gridHTML;
+  },
+
+  // Toggle achievement modal
+  toggleAchievementModal() {
+    const modal = document.getElementById('achievement-modal');
+    if (!modal) return;
+
+    if (modal.style.display === 'none' || !modal.style.display) {
+      this.renderAchievementModal();
+      modal.style.display = 'flex';
+    } else {
+      modal.style.display = 'none';
+    }
   }
 };
